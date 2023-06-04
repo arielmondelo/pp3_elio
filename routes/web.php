@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutenticadorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+//Rutas para login y logout.
+
+Route::post('/login', [AutenticadorController::class, 'login'])
+    ->name('autenticador.login');
+
+Route::get('logout', [AutenticadorController::class, 'logout'])
+    ->name('autenticador.logout')
+    ->middleware('auth:sanctum');
+
