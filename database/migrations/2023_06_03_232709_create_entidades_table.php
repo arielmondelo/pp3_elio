@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('entidades', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('tipoEntidad_id');
             $table->timestamps();
         });
     }

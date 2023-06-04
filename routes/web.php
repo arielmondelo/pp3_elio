@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [AutenticadorController::class, 'login'])
     ->name('autenticador.login');
 
+//Ruta para cerrar sesión. El middleware valida que esté autenticado el usuario.
 Route::get('logout', [AutenticadorController::class, 'logout'])
     ->name('autenticador.logout')
     ->middleware('auth:sanctum');
