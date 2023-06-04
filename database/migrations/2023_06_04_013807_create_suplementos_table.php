@@ -14,10 +14,6 @@ return new class extends Migration
         Schema::create('suplementos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('contrato_id');
-<<<<<<< HEAD
-            // $table->unsignedBigInteger('entidad_id');
-=======
->>>>>>> e78a96670e61fb599af357dde3e9ad342f6273a2
             $table->string('numeroSuplemento');
             $table->date('fechaInicio');
             $table->date('fechaFin');
@@ -27,10 +23,7 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->foreign('contrato_id')->references('id')->on('contratos')->onDelete('cascade')->onUpdate('cascade');
-<<<<<<< HEAD
             // $table->foreign('entidad_id')->references('id')->on('entidades')->onDelete('cascade')->onUpdate('cascade');
-=======
->>>>>>> e78a96670e61fb599af357dde3e9ad342f6273a2
         });
     }
 
