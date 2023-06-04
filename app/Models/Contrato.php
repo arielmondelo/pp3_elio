@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -25,6 +26,11 @@ class Contrato extends Model
             'monto'
         ];
 
+
+    public function entidad():BelongsTo{
+
+        return $this->belongsTo(Entidad::class);
+    }
     public function cobros(): BelongsToMany {
 
         return $this->belongsToMany(Cobro::class, 'cobro_contrato', 'contrato_id', 'cobro_id');
