@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('tipo_solicitudes', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('codigo');
+            $table->string('nombre',100);
+            $table->string('codigo',10);
             $table->timestamps();
             $table->softDeletes();
         });
