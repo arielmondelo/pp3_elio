@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
 
 class Entidad extends Model
 {
@@ -27,4 +29,15 @@ class Entidad extends Model
             'codigoNit',
             'titular'
         ];
+    
+    public function contratos(): HasOne
+    {
+        return $this->hasOne(Contrato::class);
+    }    
+    
+    public function tipoEntida(): BelongsToMany {
+
+        return $this->belongsToMany(TipoEntidad::class);
+    }
+
 }
