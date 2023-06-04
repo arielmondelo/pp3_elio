@@ -19,16 +19,16 @@ class AutenticadorController extends Controller
         );
         if (Auth::attempt($credenciales)){
             $token = Auth::user()->createToken('token')->plainTextToken;
-            return response()->json(['mensaje'=>'Usuario autenticado', 'token'=>$token],  Response::HTTP_ACCEPTED);
+            $mensaje = 'Usuario autenticado correctamente';
+            return view('sesion.login', compact($token, $mensaje));
         }
         else{
-            return  response()->json(['mensaje'=>'Credenciales inválidas'],  Response::HTTP_UNAUTHORIZED);
+            return  redirect('autenticador.login');
         }
     }
 
     public function logout(){
         $user = Auth::user();
         $user->currentAccessToken()->delete();
-        return response()->json(["mensaje"=>"Sesión cerrada con éxito"], Response::HTTP_OK);
     }
 }

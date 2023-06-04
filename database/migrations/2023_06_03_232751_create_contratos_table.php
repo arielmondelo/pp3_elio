@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('contratos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('entidad_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('numeroContrato', 10);
             $table->date('fechaInicio');
             $table->date('fechaFin');
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->string('descripcion');
             $table->softDeletes();
 
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('entidad_id')->references('id')->on('entidades')->onDelete('cascade')->onUpdate('cascade');
         });
     }
