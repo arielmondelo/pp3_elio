@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('coordinadores', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre', 100);
+            $table->string('apellidos', 100);
+            $table->string('telefono', 10);
+            $table->string('correo')->unique();
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

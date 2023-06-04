@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('entornos_virtuales', function (Blueprint $table) {
             $table->id();
+            $table->string('nombreMV', 25);
+            $table->string('estado', 25);
+            $table->double('capacidadDisco');
+            $table->float('memoriaRAM');
+            $table->string('arquitectura', 25);
+            $table->string('sistemaOperativo', 25);
+            $table->string('contrasena',15);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

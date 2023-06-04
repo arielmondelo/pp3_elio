@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('suplementos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('contrato_id');
+            $table->unsignedBigInteger('entidad_id');
+            $table->string('numeroSuplemento');
+            $table->date('fechaInicio');
+            $table->date('fechaFin');
+            $table->string('descripcion');
+            $table->string('estado');
+            $table->float('montoAumentar');
+            $table->softDeletes();
+
+            $table->foreign('contrato_id')->references('id')->on('contratos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('entidad_id')->references('id')->on('entidades')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

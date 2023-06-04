@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contrato_cobros', function (Blueprint $table) {
+        Schema::create('tipo_cobros', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre', 50);
+            $table->string('codigo', 25);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contrato_cobros');
+        Schema::dropIfExists('tipo_cobros');
     }
 };

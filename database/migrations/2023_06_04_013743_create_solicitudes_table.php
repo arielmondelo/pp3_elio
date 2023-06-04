@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('solicitudes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('tipoSolicitud_id');
+            $table->string('numeroExpediente', 50);
+            $table->date('fechaInicio');
+            $table->date('fechaFin');
+            $table->string('estado', 10);
+            $table->string('descripcion');
+            $table->string('nombreProducto');
+            $table->string('versionProducto');
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('tipoSolicitud_id')->references('id')->on('tipo_solicitudes')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

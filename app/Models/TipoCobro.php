@@ -6,19 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Cobro extends Model
+class TipoCobro extends Model
 {
-    protected $table = 'cobros';
+    protected $table = 'tipo_cobros';
 
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable =
         [
-            'monto',
-            'fecha',
-            'nombreProducto',
-            'descripcion',
-            'estado'
+            'nombre',
+            'codigo'
         ];
 }

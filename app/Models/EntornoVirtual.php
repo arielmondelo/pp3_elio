@@ -18,7 +18,7 @@ class EntornoVirtual extends Model
             'nombreMV',
             'estado',
             'capacidadDisco',
-            'MemoriaRAM',
+            'memoriaRAM',
             'arquitectura',
             'sistemaOperativo',
             'contrasena',

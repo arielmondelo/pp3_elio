@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('contratos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('entidad_id');
-            $table->string('numeroContrato');
+            $table->string('numeroContrato', 10);
             $table->date('fechaInicio');
             $table->date('fechaFin');
             $table->string('estado');

@@ -14,7 +14,19 @@ return new class extends Migration
         Schema::create('entidades', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('tipoEntidad_id');
+            $table->string('nombre', 100);
+            $table->string('nombreRepresentante', 100);
+            $table->string('apellidosRepresentante', 100);
+            $table->string('telefono', 10);
+            $table->string('direccion');
+            $table->string('moneda', 10);
+            $table->string('codigoReeup', 50);
+            $table->string('codigoNit', 50);
+            $table->string('titular', 100);
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('tipoEntidad_id')->references('id')->on('tipo_entidades')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

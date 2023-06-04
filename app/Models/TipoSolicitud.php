@@ -15,7 +15,7 @@ class TipoSolicitud extends Model
 
     protected $fillable =
         [
-          'nombreSolicitud',
-            'codigo'
+          'nombre',
+          'codigo',
         ];
 }
