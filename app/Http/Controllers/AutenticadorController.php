@@ -23,7 +23,7 @@ class AutenticadorController extends Controller
             return view('sesion.login', compact($token, $mensaje));
         }
         else{
-            return  redirect('autenticador.login');
+            return redirect('autenticador.login');
         }
     }
 
