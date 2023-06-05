@@ -12,9 +12,15 @@ class CobroController extends Controller
      */
     public function index()
     {
-        //
+        $cobros = Cobro::all();
+        return view('cobros', compact('cobros'));
     }
 
+    public function CobrosContratos() 
+    { 
+        $cobros = Cobro::with(['contratos'])->get(); 
+        return view('cobros', compact('cobros')); 
+    }
     /**
      * Show the form for creating a new resource.
      */

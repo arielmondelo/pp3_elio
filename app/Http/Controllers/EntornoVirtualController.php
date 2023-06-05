@@ -12,7 +12,8 @@ class EntornoVirtualController extends Controller
      */
     public function index()
     {
-        //
+        $entornosVirtuales = EntornoVirtual::all();
+        return view('entornosVirtuales', compact('entornosVirtuales'));
     }
 
     /**

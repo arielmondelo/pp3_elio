@@ -12,7 +12,8 @@ class CoordinadorController extends Controller
      */
     public function index()
     {
-        //
+        $coordinadores = Coordinador::all();
+        return view('coordinadores', compact('coordinadores'));
     }
 
     /**

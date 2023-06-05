@@ -12,9 +12,15 @@ class ContratoController extends Controller
      */
     public function index()
     {
-        //
+        $contratos = Contrato::all();
+        return view('contratos', compact('contratos'));
     }
 
+    public function CobrosContratos() 
+    { 
+        $contratos = Contrato::with(['cobros'])->get(); 
+        return view('contratos', compact('contratos')); 
+    }
     /**
      * Show the form for creating a new resource.
      */

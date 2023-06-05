@@ -12,7 +12,8 @@ class TipoCobroController extends Controller
      */
     public function index()
     {
-        //
+        $tiposCobros = TipoCobro::all();
+        return view('tiposCobros', compact('tiposCobros'));
     }
 
     /**

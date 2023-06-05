@@ -12,7 +12,8 @@ class TipoEntidadController extends Controller
      */
     public function index()
     {
-        //
+        $tiposEntidades = TipoEntidad::all();
+        return view('tiposEntidades', compact('tiposEntidades'));
     }
 
     /**

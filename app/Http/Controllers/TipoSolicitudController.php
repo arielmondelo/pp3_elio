@@ -12,7 +12,8 @@ class TipoSolicitudController extends Controller
      */
     public function index()
     {
-        //
+        $tipoSolicitudes = TipoSolicitud::all();
+        return view('tipoSolicitudes', compact('tipoSolicitudes'));
     }
 
     /**

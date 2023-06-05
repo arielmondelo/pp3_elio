@@ -12,7 +12,8 @@ class SuplementoController extends Controller
      */
     public function index()
     {
-        //
+        $suplementos = Suplemento::all();
+        return view('suplementos', compact('suplementos'));
     }
 
     /**
