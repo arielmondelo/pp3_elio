@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EntidadRequest;
 use App\Models\Entidad;
 use Illuminate\Http\Request;
 use App\Models\TipoEntidad;
@@ -30,6 +31,12 @@ class EntidadController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+    public function store(EntidadRequest $request){
+        $entidad = Entidad::create($request->validated());
+        $entidad->save();
+        return redirect()->route('entidades.mostrar');
+    }
     public function guardarEntidad(Request $request)
     {
         $entidad = new Entidad();
