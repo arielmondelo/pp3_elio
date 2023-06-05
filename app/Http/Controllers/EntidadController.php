@@ -14,8 +14,8 @@ class EntidadController extends Controller
     public function index()
     {
         $entidades = Entidad::all();
-        /* $tipo_entidades = TipoEntidad::all(); */
-        return view('entidades.mostrar', compact('entidades'/* , 'tipo_entidades' */));
+        $tipo_entidades = TipoEntidad::all();
+        return view('entidades.mostrar', compact('entidades', 'tipo_entidades'));
 
     }
 
@@ -30,9 +30,23 @@ class EntidadController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function guardarEntidad(Request $request)
     {
-        //
+        $entidad = new Entidad();
+        $entidad->nombre = $request->nombre;
+        $entidad->tipoEntidad_id = $request->tipoEntidad_id;
+        $entidad->nombreRepresentante = $request->nombreRepresentante;
+        $entidad->apellidosRepresentante = $request->apellidosRepresentante;
+        $entidad->telefono = $request->telefono;
+        $entidad->direccion = $request->direccion;
+        $entidad->cuenta = $request->cuenta;
+        $entidad->moneda = $request->moneda;
+        $entidad->codigoReeup = $request->codigoReeup;
+        $entidad->codigoNit = $request->codigoNit;
+        $entidad->titular = $request->titular;
+        $entidad->save();
+
+        return redirect()->route('entidades.mostrar');
     }
 
     /**

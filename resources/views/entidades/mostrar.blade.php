@@ -4,64 +4,109 @@
     <div class="d-flex justify-content-between">
         <h1>Entidades</h1>
         <div class="modal-footer">
-            <button style="width:100%" class="btn btn-success" type="submit" id="eliminarArticulo" data-bs-toggle="modal"
+            <button style="width:100%" class="btn btn-success mx-4" type="submit" id="eliminarArticulo" data-bs-toggle="modal"
                 data-bs-target="#abcd">Crear</button>
         </div>
     </div>
 
     <!-- Modal Eliminar -->
     <div class="modal fade" id="abcd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Entidad.</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form class="row g-3" method="POST" action="{{ route('guardar.entidad') }}">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Tipo entidad *</label>
-                            <select class="form-select" id="validationDefault04" required name="estado">
-                                <option selected disabled value="">Seleccione tipo</option>
-                                @foreach ($entidades as $entidad)
-                                    <option value="{{ $entidad->tipoEntidad_id }}">
-                                        {{ $entidad->tipoEntidades->id }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
+        <div class="modal-dialog modal-lg">
+            <form class="row g-3" method="POST" action="{{ route('guardar.entidad') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Entidad.</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">tipoEntidad_id *</label>
-                            <input type="text" class="form-control" id="tipoEntidad_id" placeholder="tipoEntidad_id"
-                                required name="tipoEntidad_id">
-                        </div>
+                    <div class="modal-body px-4 py-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Tipo entidad *</label>
+                                    <select class="form-select" id="tipoEntidad_id" required name="tipoEntidad_id">
+                                        <option selected disabled value="">Seleccione tipo</option>
+                                        @foreach ($tipo_entidades as $tipo_entidad)
+                                            <option value="{{ $tipo_entidad->id }}">
+                                                {{ $tipo_entidad->nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Chapa *</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Chapa"
-                                required name="chapa">
-                        </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">nombre *</label>
+                                    <input type="text" class="form-control" id="nombre" placeholder="nombre" required
+                                        name="nombre">
+                                </div>
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Kilometraje *</label>
-                            <input type="number" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Kilometraje" required name="km">
-                        </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">nombreRepresentante *</label>
+                                    <input type="text" class="form-control" id="nombreRepresentante"
+                                        placeholder="nombreRepresentante" required name="nombreRepresentante">
+                                </div>
 
-                        <div class="">
-                            <label for="exampleFormControlInput1" class="form-label">Chofer *</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Chofer"
-                                required name="chofer">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">apellidosRepresentante
+                                        *</label>
+                                    <input type="text" class="form-control" id="apellidosRepresentante"
+                                        placeholder="apellidosRepresentante" required name="apellidosRepresentante">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">telefono *</label>
+                                    <input type="number" class="form-control" id="telefono" placeholder="telefono"
+                                        required name="telefono">
+                                </div>
+
+                                <div class="">
+                                    <label for="exampleFormControlInput1" class="form-label">titular *</label>
+                                    <input type="text" class="form-control" id="titular" placeholder="titular" required
+                                        name="titular">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">direccion *</label>
+                                    <input type="text" class="form-control" id="direccion" placeholder="direccion"
+                                        required name="direccion">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">cuenta *</label>
+                                    <input type="text" class="form-control" id="cuenta" placeholder="cuenta" required
+                                        name="cuenta">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">moneda
+                                        *</label>
+                                    <input type="text" class="form-control" id="moneda" placeholder="moneda" required
+                                        name="moneda">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">codigoReeup *</label>
+                                    <input type="text" class="form-control" id="codigoReeup"
+                                        placeholder="codigoReeup" required name="codigoReeup">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">codigoNit *</label>
+                                    <input type="text" class="form-control" id="codigoNit" placeholder="codigoNit"
+                                        required name="codigoNit">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer px-4 py-3">
                         <button style="width:100%" class="btn btn-success" type="submit"
                             id="eliminarArticulo">Crear</button>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -69,8 +114,8 @@
         <div class="row">
             <div class="col-md-12 my-3 mb-4">
                 <form class="d-flex justify-content-end">
-                    <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar" id="q"
-                        onkeyup="search()" style="width: 250px">
+                    <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar"
+                        id="q" onkeyup="search()" style="width: 250px">
                 </form>
             </div>
             <div class="col-md-12">
@@ -95,7 +140,7 @@
                     <tbody id="the_table_body">
                         @foreach ($entidades as $entidad)
                             <tr>
-                                <td>{{ $entidad->tipoEntidad_id }}</td>
+                                <td>{{ $entidad->tipoEntidades->nombre }}</td>
                                 <td>{{ $entidad->nombre }}</td>
                                 <td>{{ $entidad->nombreRepresentante }}</td>
                                 <td>{{ $entidad->apellidosRepresentante }}</td>
