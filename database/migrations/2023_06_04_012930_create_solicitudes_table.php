@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('tipoSolicitud_id');
             $table->unsignedBigInteger('entidad_id');
+            $table->unsignedBigInteger('contrato_id');
             $table->string('numeroExpediente', 50);
             $table->date('fechaInicio');
             $table->date('fechaFin');
@@ -25,8 +26,11 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
+            
             $table->foreign('tipoSolicitud_id')->references('id')->on('tipo_solicitudes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('entidad_id')->references('id')->on('entidades')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('contrato_id')->references('id')->on('contratos')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

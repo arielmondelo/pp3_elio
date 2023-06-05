@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('apellidosRepresentante', 100);
             $table->string('telefono', 10);
             $table->string('direccion');
+            $table->string('cuenta',25);
             $table->string('moneda', 10);
             $table->string('codigoReeup', 50);
             $table->string('codigoNit', 50);

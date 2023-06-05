@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('entornos_virtuales', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('solicitud_id');
             $table->string('nombreMV', 25);
             $table->string('estado', 25);
             $table->double('capacidadDisco');
@@ -22,6 +23,9 @@ return new class extends Migration
             $table->string('contrasena',15);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('solicitud_id')->references('id')->on('solicitudes')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

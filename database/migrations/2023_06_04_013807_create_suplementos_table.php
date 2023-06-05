@@ -23,6 +23,7 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->foreign('contrato_id')->references('id')->on('contratos')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('entidad_id')->references('id')->on('entidades')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
