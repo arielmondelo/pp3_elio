@@ -10,3 +10,121 @@
 #email:active {
     border-color: #ff6600 !important;
 }
+
+/* Sidebar */
+#navbarCliente {
+    padding: 15px 10px !important;
+    background: #fff !important;
+    border: none !important;
+    border-radius: 0 !important;
+    margin-bottom: 40px !important;
+    -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+li>#menu-toggle {
+    background-color: #ff6600 !important;
+    border-color: #ff6600 !important;
+}
+
+li>#menu-toggle:hover {
+    background-color: #ff6600d2 !important;
+    border-color: #ff6600d2 !important;
+}
+
+#sidebarCollapse {
+    background-color: #ff6600;
+}
+
+#sidebarCollapse:hover {
+    background-color: #F6A36A !important;
+}
+
+.dropdown-toggle {
+    color: #ff6600 !important;
+}
+
+li>a:hover {
+    color: #F6A36A !important;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 0;
+    width: 300px;
+    height: 100%;
+    margin-left: -300px;
+    overflow-y: auto;
+    background: #1d1919;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper ul li {
+    font-size: 16px;
+}
+
+#sidebar-wrapper.active {
+    left: 300px;
+    width: 300px;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.padding {
+    padding-left: 300px !important;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.noPadding {
+    padding-left: 0px !important;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.logo {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+
+.rounded-circle {
+    border-radius: 50% !important;
+}
+
+#sidebarMenu {
+    background-color: #1d1919;
+}
+
+#sidebarMenu>li>a {
+    text-decoration: none;
+    color: white;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: normal;
+}
+
+hr {
+    margin: .5rem 0 !important;
+}
