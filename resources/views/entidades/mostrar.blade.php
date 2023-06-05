@@ -140,7 +140,7 @@
                     <tbody id="the_table_body">
                         @foreach ($entidades as $entidad)
                             <tr>
-                                <td>{{ $entidad->tipoEntidad_id }}</td>
+                                <td>{{ $entidad->tipoEntidades->nombre }}</td>
                                 <td>{{ $entidad->nombre }}</td>
                                 <td>{{ $entidad->nombreRepresentante }}</td>
                                 <td>{{ $entidad->apellidosRepresentante }}</td>
