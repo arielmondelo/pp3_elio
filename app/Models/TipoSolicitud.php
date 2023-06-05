@@ -18,4 +18,10 @@ class TipoSolicitud extends Model
           'nombre',
           'codigo',
         ];
+
+    
+  public function solicitudes(): HasMany
+  {
+    return $this->hasMany(Solicitud::class);
+  }
 }

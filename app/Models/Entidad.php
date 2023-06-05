@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Entidad extends Model
 {
@@ -35,9 +36,21 @@ class Entidad extends Model
         return $this->hasOne(Contrato::class);
     }    
     
-    public function tipoEntida(): BelongsToMany {
+    public function tipoEntidades(): BelongsTo {
 
         return $this->belongsToMany(TipoEntidad::class);
     }
+
+    public function coordinadores(): HasMany
+    {
+        return $this->hasMany(Coordinador::class);
+    }
+
+    public function solicitudes(): HasMany
+    {
+        return $this->hasMany(Solicitud::class);
+    }
+
+
 
 }
