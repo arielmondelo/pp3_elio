@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AutenticadorController;
+use App\Http\Controllers\EntidadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +32,8 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/* Entidades */
+Route::get('entidades.mostrar', [EntidadController::class, 'index'])->name('entidades.mostrar');
+Route::post('/eliminarEntidad/{id}', [EntidadController::class, 'eliminarEntidad'])->name('eliminarEntidad');
+Route::post('guardar.entidad', [EntidadController::class, 'guardarEntidad'])->name('guardar.entidad');

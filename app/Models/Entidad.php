@@ -38,7 +38,7 @@ class Entidad extends Model
     
     public function tipoEntidades(): BelongsTo {
 
-        return $this->belongsToMany(TipoEntidad::class);
+        return $this->belongsTo(TipoEntidad::class, 'tipoEntidad_id');
     }
 
     public function coordinadores(): HasMany

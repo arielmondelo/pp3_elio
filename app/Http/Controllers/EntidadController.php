@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Entidad;
 use Illuminate\Http\Request;
+use App\Models\TipoEntidad;
 
 class EntidadController extends Controller
 {
@@ -13,7 +14,8 @@ class EntidadController extends Controller
     public function index()
     {
         $entidades = Entidad::all();
-        return view('entidades', compact('entidades'));
+        /* $tipo_entidades = TipoEntidad::all(); */
+        return view('entidades.mostrar', compact('entidades'/* , 'tipo_entidades' */));
 
     }
 
@@ -60,8 +62,22 @@ class EntidadController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Entidad $entidad)
+    public function eliminarEntidad(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            $entidad = Entidad::findOrFail($id);
+
+            if ($entidad->delete()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => '¡Satisfactorio!, eliminado con éxito.',
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => '¡Error!, No se pudo eliminar.',
+                ]);
+            }
+        }
     }
 }

@@ -20,6 +20,6 @@ class TipoEntidad extends Model
 
     public function entidades(): HasMany
     {
-        return $this->hasMany(Entidad::class);
+        return $this->hasMany(Entidad::class, 'tipoEntidad_id');
     }
 }
