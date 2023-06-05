@@ -1,0 +1,1 @@
+// Esta vista es para los detalles del metodo show mostrar Entidad  con tipo de entidad

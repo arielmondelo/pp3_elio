@@ -59,9 +59,13 @@ class EntidadController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Entidad $entidad)
+    public function show($id)
     {
-        //
+       $entidad = new Entidad();
+       $entidad = Entidad::find($id);
+       $entidad ->TipoEntidad();
+       return wiew('entidades.detalles', compact('entidad'));
+    
     }
 
     /**
