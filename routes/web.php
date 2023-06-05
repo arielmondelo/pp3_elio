@@ -20,11 +20,15 @@ use Illuminate\Support\Facades\Route;
 
 //Rutas para login y logout.
 
-Route::post('/login', [AutenticadorController::class, 'login'])
-    ->name('autenticador.login');
+/* Route::post('/login', [AutenticadorController::class, 'login'])
+    ->name('autenticador.login'); */
 
 //Ruta para cerrar sesión. El middleware valida que esté autenticado el usuario.
-Route::get('logout', [AutenticadorController::class, 'logout'])
+/* Route::get('logout', [AutenticadorController::class, 'logout'])
     ->name('autenticador.logout')
-    ->middleware('auth:sanctum');
+    ->middleware('auth:sanctum'); */
 
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
