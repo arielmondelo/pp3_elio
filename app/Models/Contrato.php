@@ -30,7 +30,7 @@ class Contrato extends Model
 
     public function entidad():BelongsTo{
 
-        return $this->belongsTo(Entidad::class);
+        return $this->belongsTo(Entidad::class, 'entidad_id');
     }
 
     public function cobros(): BelongsToMany {

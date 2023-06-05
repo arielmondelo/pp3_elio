@@ -32,18 +32,18 @@ class Solicitud extends Model
         return $this->hasMany(EntornoVirtual::class);
     }
 
-    public function contratos():BelongsTo
+    public function contrato():BelongsTo
     {
-        return $this->belongsTo(Contrato::class);
+        return $this->belongsTo(Contrato::class, 'contrato_id');
     }
 
-    public function entidades():BelongsTo
+    public function entidad():BelongsTo
     {
-        return $this->belongsTo(Entidad::class);
+        return $this->belongsTo(Entidad::class, 'entidad_id');
     }
 
-    public function tipoSolicitudes():BelongsTo
+    public function tipoSolicitud():BelongsTo
     {
-        return $this->belongsTo(TipoSolicitud::class);
+        return $this->belongsTo(TipoSolicitud::class , 'tipoSolicitud_id');
     }
 }

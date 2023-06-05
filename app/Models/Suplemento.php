@@ -24,8 +24,8 @@ class Suplemento extends Model
             'montoAumentar'
         ];
 
-    public function contratos():BelongsTo
+    public function contrato():BelongsTo
     {
-        return $this->belongsTo(Contrato::class);
+        return $this->belongsTo(Contrato::class, 'contrato_id');
     }
 }

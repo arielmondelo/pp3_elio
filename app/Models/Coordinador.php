@@ -23,15 +23,15 @@ class Coordinador extends Model
             'correo'
         ];
 
-    public function contratos(): BelongsTo
+    public function contrato(): BelongsTo
     {
-        return $this->belongsToMany(Contrato::class);
+        return $this->belongsToMany(Contrato::class, 'contrato_id');
  
     }
 
-    public function entidades(): BelongsTo
+    public function entidad(): BelongsTo
     {
-        return $this->belongsToMany(Entidad::class);
+        return $this->belongsToMany(Entidad::class, 'entidad_id');
  
     }
 }

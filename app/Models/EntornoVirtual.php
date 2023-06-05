@@ -28,9 +28,9 @@ class EntornoVirtual extends Model
         ];
 
 
-    public function solicitudes(): BelongsTo
+    public function solicitud(): BelongsTo
     {
-        return $this->belongsTo(Solicitud::class);
+        return $this->belongsTo(Solicitud::class, 'solicitud_id');
         
     }
 }

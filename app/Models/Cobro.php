@@ -31,9 +31,9 @@ class Cobro extends Model
         return $this->belongsToMany(Contrato::class, 'cobro_contrato', 'cobro_id', 'contrato_id' );
     }
 
-    public function tiposCobro():BelongsTo
+    public function tipoCobro():BelongsTo
     {
-        return $this->belongsTo(TipoCobro::class);
+        return $this->belongsTo(TipoCobro::class, 'tipoCobro_id');
     }
 
 }

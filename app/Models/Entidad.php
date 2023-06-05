@@ -36,7 +36,7 @@ class Entidad extends Model
         return $this->hasOne(Contrato::class);
     }    
     
-    public function tipoEntidades(): BelongsTo {
+    public function tipoEntidad(): BelongsTo {
 
         return $this->belongsTo(TipoEntidad::class, 'tipoEntidad_id');
     }
