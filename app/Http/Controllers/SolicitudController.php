@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Solicitud;
+use App\Models\Entidad;
+use App\Models\Contrato;
+use App\Models\TipoSolicitud;
 use Illuminate\Http\Request;
+use App\Http\Requests\SolicitudRequest
+;
+
 
 class SolicitudController extends Controller
 {
@@ -12,8 +18,10 @@ class SolicitudController extends Controller
      */
     public function index()
     {
+        
         $solicitudes = Solicitud::all();
-        return view('solicitudes', compact('solicitudes'));
+
+        return view('solicitudes.mostrar', compact('solicitudes'));
     }
 
     /**
@@ -27,9 +35,11 @@ class SolicitudController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SolicitudRequest $request)
     {
-        //
+        $solicitud = Solicitud::create($request->validated());
+        $solicitud->save();
+        return redirect()->route('solicitudes.mostrar');
     }
 
     /**
@@ -51,16 +61,49 @@ class SolicitudController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Solicitud $solicitud)
+    public function update(Request $request, $id)
     {
-        //
+        Solicitud::where('id', $id)
+        ->update([
+            'numeroExpediente' => $request->numeroExpediente,
+            'fechaInicio'=> $request->fechaInicio,
+            'fechaFin' => $request->fechaFin,
+            'estado'  => $request->estado,
+            'descripcion' => $request->descripcion,
+            'nombreProducto' => $request->nombreProducto,
+            'versionProducto' => $request->versionProducto,
+            'contrato' => $request->contrato,
+            'entidad_id' => $request->entidad_id,
+            'tipoSolicitud_id' => $request->tipoSolicitud_id, 
+
+    ]);
+
+
+        session()->flash('status', 'Solicitud editada con éxito');
+
+        return redirect()->route('solicitudes.mostrar');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Solicitud $solicitud)
+    public function eliminarSolicitud(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            $solicitud = Solicitud::findOrFail($id);
+
+            if ($solicitud->delete()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => '¡Satisfactorio!, eliminado con éxito.',
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => '¡Error!, No se pudo eliminar.',
+                ]);
+            }
+        }
     }
 }

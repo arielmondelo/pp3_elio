@@ -24,7 +24,11 @@ class Solicitud extends Model
             'estado',
             'descripcion',
             'nombreProducto',
-            'versionProducto'
+            'versionProducto',
+            'contrato',
+            'entidad_id',
+            'tipoSolicitud_id', 
+
         ];
 
     public function entornosVirtuales(): HasMany

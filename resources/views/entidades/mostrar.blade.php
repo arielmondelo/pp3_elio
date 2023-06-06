@@ -23,7 +23,6 @@
             toastr.success("{{ session('status') }}");
         </script>
     @endif
-
     <div class="d-flex justify-content-between">
         <h1>Entidades</h1>
         <div class="modal-footer">

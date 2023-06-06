@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coordinador;
+use App\Models\Entidad;
 use Illuminate\Http\Request;
 use App\Http\Requests\CoordinadorRequest;
 
@@ -15,7 +16,8 @@ class CoordinadorController extends Controller
     public function index()
     {
         $coordinadores = Coordinador::all();
-        return view('coordinadores', compact('coordinadores'));
+        $entidades = Entidad::all();
+        return view('coordinadores.mostrar', compact('coordinadores', 'entidades'));
     }
 
     /**
@@ -33,7 +35,7 @@ class CoordinadorController extends Controller
     {
         $coordinador = Coordinador::create($request->validated());
         $coordinador->save();
-        return redirect()->route('coordinadores.mostrarCoordinadores');
+        return redirect()->route('coordinadores.mostrar');
     }
 
     /**
@@ -55,9 +57,23 @@ class CoordinadorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Coordinador $coordinador)
+    public function update(Request $request, $id)
     {
-        //
+        Coordinador::where('id', $id)
+        ->update([
+        'entidad_id' => $request->entidad_id,
+        'nombre' => $request->nombre,
+        'apellidos' => $request->apellidos,
+        'telefono' => $request->telefono,
+        'correo' => $request->correo,
+    ]);
+
+        /* return redirect()->route('entidades.mostrar'); */
+        /* ->with('success', 'Entidad editada'); */
+
+        session()->flash('status', 'Coordinador editado con éxito');
+
+        return redirect()->route('coordinadores.mostrar');
     }
 
     /**

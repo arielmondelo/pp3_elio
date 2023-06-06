@@ -20,18 +20,20 @@ class Coordinador extends Model
             'nombre',
             'apellidos',
             'telefono',
-            'correo'
+            'correo',
+            'contrato_id',
+            'entidad_id',
+
         ];
 
     public function contrato(): BelongsTo
     {
-        return $this->belongsToMany(Contrato::class, 'contrato_id');
+        return $this->belongsTo(Contrato::class, 'contrato_id');
  
     }
 
     public function entidad(): BelongsTo
     {
-        return $this->belongsToMany(Entidad::class, 'entidad_id');
- 
+        return $this->belongsTo(Entidad::class, 'entidad_id'); 
     }
 }

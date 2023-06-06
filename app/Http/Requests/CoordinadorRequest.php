@@ -25,7 +25,8 @@ class CoordinadorRequest extends FormRequest
             'nombre' =>'string |required',
             'apellidos'=>'string|required',
             'telefono'=>'string |required',
-            'correo'=>'string|required|unique', 
+            'correo'=>'string|required', 
+            'entidad_id'=>'string |required',
         ];
     }
 }

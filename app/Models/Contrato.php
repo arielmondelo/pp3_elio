@@ -24,7 +24,9 @@ class Contrato extends Model
             'fechaFin',
             'descripcion',
             'estado',
-            'monto'
+            'monto',
+            'entidad_id',
+            //'cobro_id',
         ];
 
 
