@@ -162,7 +162,7 @@
                             <td>{{ $entidad->created_at }}</td>
                             <td><button style="width: 100%" type="button" class="btn btn-warning"
                                     data-bs-toggle="modal" data-bs-target="#efg{{ $entidad->id }}"
-                                    {{-- onclick="enviarID({{ $entidad->id }} --}})">
+                                     onclick="enviarID({{ $entidad->id }} )">
                                     Editar
                                 </button></td>
                             <td><button style="width: 100%" type="button" class="btn btn-danger" data-bs-toggle="modal"
