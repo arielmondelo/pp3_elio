@@ -33,7 +33,7 @@ class CoordinadorController extends Controller
     {
         $coordinador = Coordinador::create($request->validated());
         $coordinador->save();
-        return redirect()->route('#');
+        return redirect()->route('coordinadores.mostrarCoordinadores');
     }
 
     /**
