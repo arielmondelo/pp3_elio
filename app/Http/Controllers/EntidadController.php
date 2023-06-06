@@ -81,49 +81,29 @@ class EntidadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate(
-            [
-                'nombre'=>'string|required',
-                'tipoEntidad_id'=>'integer|required',
-                'nombreRepresentante'=>'string|required',
-                'apellidosRepresentante'=>'string|required',
-                'telefono'=>'string|required',
-                'direccion'=>'string|required',
-                'cuenta'=>'string|required',
-                'moneda'=>'string|required',
-                'codigoReeup'=>'string|required',
-                'codigoNit'=>'string|required',
-                'titular'=>'string|required',
-            ]
-        );
-        $entidad = Entidad::find($id);
-        $datos_actualizados = [
-            'nombre' => $entidad->nombre = $request->input('nombre'),
-            'tipoEntidad_id' => $entidad->tipoEntidad_id = $request->input('tipoEntidad_id'),
-            'nombreRepresentante' => $entidad->nombreRepresentante = $request->input('nombreRepresentante'),
-            'apellidosRepresentante' => $entidad->apellidosRepresentante = $request->input('apellidosRepresentante'),
-            'telefono' => $entidad->telefono = $request->input('telefono'),
-            'direccion' => $entidad->direccion = $request->input('direccion'),
-            'cuenta' => $entidad->cuenta = $request->input('cuenta'),
-            'moneda' => $entidad->moneda = $request->input('moneda'),
-            'codigoReeup' => $entidad->codigoReeup = $request->input('codigoReeup'),
-            'codigoNit' => $entidad->codigoNit = $request->input('codigoNit'),
-            'titular'=>$entidad->titular = $request->input('titular'),
-        ];
-        $entidad->update($datos_actualizados);
-        return redirect()->route('entidades.mostrar');
+        /* $entidad = Entidad::findOrFail($id); */
+        Entidad::where('id', $id)
+        ->update([
+        'tipoEntidad_id' => $request->tipoEntidad_id,
+        'nombre' => $request->nombre,
+        'nombreRepresentante' => $request->nombreRepresentante,
+        'apellidosRepresentante' => $request->apellidosRepresentante,
+        'telefono' => $request->telefono,
+        'direccion' => $request->direccion,
+        'cuenta' => $request->cuenta,
+        'moneda' => $request->moneda,
+        'codigoReeup' => $request->codigoReeup,
+        'codigoNit' => $request->codigoNit,
+        'titular' => $request->titular,
+    ]);
 
-        /*  $entidad = Entidad::find($id);
-         $datos = $request->validated();
-         $entidad->update($datos);
-
-          return redirect()->route('entidades.mostrar'); */
+        /* return redirect()->route('entidades.mostrar'); */
         /* ->with('success', 'Entidad editada'); */
 
-        /* $request->session()->flash('alert-success', 'El contrato se ha guardado satisfactoriamente');
-        return redirect()->route('entidades.mostrar'); */
+        session()->flash('status', 'Entidad editada con éxito');
 
-        /* dd($request); */
+        return redirect()->route('entidades.mostrar');
+
     }
 
     /**

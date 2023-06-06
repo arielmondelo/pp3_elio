@@ -1,20 +1,34 @@
 @extends('layouts.mainCliente')
 
 @section('content')
-    <div class="flash-message">
-        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-            @if (Session::has('alert-' . $msg))
-                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close"
-                        data-dismiss="alert" aria-label="close">&times;</a></p>
-            @endif
-        @endforeach
-    </div>
+    {{-- @if (session('status'))
+        <script>
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-bottom-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.info("{{ session('status') }}");
+        </script>
+    @endif --}}
 
     <div class="d-flex justify-content-between">
         <h1>Entidades</h1>
         <div class="modal-footer">
-            <button style="width:100%" class="btn btn-success mx-4" type="submit" id="eliminarArticulo"
-                data-bs-toggle="modal" data-bs-target="#abcd">Crear</button>
+            <button style="width:100%" class="btn btn-success mx-4" type="submit" id="eliminarArticulo" data-bs-toggle="modal"
+                data-bs-target="#abcd">Crear</button>
         </div>
     </div>
 
@@ -65,7 +79,7 @@
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">telefono *</label>
-                                    <input type="number" class="form-control" id="telefono" placeholder="telefono"
+                                    <input type="number" class="form-control" id="inputCrear" placeholder="telefono"
                                         required name="telefono">
                                 </div>
 
@@ -92,8 +106,8 @@
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">moneda
                                         *</label>
-                                    <input type="text" class="form-control" id="moneda" placeholder="moneda"
-                                        required name="moneda">
+                                    <input type="text" class="form-control" id="moneda" placeholder="moneda" required
+                                        name="moneda">
                                 </div>
 
                                 <div class="mb-3">
@@ -130,19 +144,20 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">tipoEntidad_id</th>
-                        <th scope="col">nombre</th>
-                        <th scope="col">nombreRepresentante</th>
-                        <th scope="col">apellidosRepresentante</th>
-                        <th scope="col">telefono</th>
-                        <th scope="col">direccion</th>
-                        <th scope="col">cuenta</th>
-                        <th scope="col">moneda</th>
-                        <th scope="col">codigoReeup</th>
-                        <th scope="col">codigoNit</th>
-                        <th scope="col">titular</th>
-                        <th scope="col">fecha</th>
-                        <th scope="col">-</th>
+                        <th>tipoEntidad_id</th>
+                        <th>nombre</th>
+                        {{-- <th>nombreRepresentante</th>
+                        <th>apellidosRepresentante</th> --}}
+                        <th>telefono</th>
+                        <th>direccion</th>
+                        <th>cuenta</th>
+                        <th>moneda</th>
+                        <th>codigoReeup</th>
+                        <th>codigoNit</th>
+                        <th>titular</th>
+                        {{-- <th>fecha</th> --}}
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="the_table_body">
@@ -150,8 +165,8 @@
                         <tr>
                             <td>{{ $entidad->tipoEntidad->nombre }}</td>
                             <td>{{ $entidad->nombre }}</td>
-                            <td>{{ $entidad->nombreRepresentante }}</td>
-                            <td>{{ $entidad->apellidosRepresentante }}</td>
+                            {{--  <td>{{ $entidad->nombreRepresentante }}</td>
+                            <td>{{ $entidad->apellidosRepresentante }}</td> --}}
                             <td>{{ $entidad->telefono }}</td>
                             <td>{{ $entidad->direccion }}</td>
                             <td>{{ $entidad->cuenta }}</td>
@@ -159,15 +174,34 @@
                             <td>{{ $entidad->codigoReeup }}</td>
                             <td>{{ $entidad->codigoNit }}</td>
                             <td>{{ $entidad->titular }}</td>
-                            <td>{{ $entidad->created_at }}</td>
+                            {{-- <td>{{ $entidad->created_at }}</td> --}}
+                            <td><button style="width: 100%" type="button" class="btn btn-primary"
+                                    data-bs-toggle="modal" data-bs-target="#show{{ $entidad->id }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                        <path
+                                            d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                    </svg>
+                                </button></td>
                             <td><button style="width: 100%" type="button" class="btn btn-warning"
-                                    data-bs-toggle="modal" data-bs-target="#efg{{ $entidad->id }}"
-                                     onclick="enviarID({{ $entidad->id }} )">
-                                    Editar
+                                    data-bs-toggle="modal" data-bs-target="#efg{{ $entidad->id }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                        <path
+                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                        <path fill-rule="evenodd"
+                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                    </svg>
                                 </button></td>
                             <td><button style="width: 100%" type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#abcd{{ $entidad->id }}">
-                                    eliminar
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                    </svg>
                                 </button></td>
                         </tr>
 
@@ -197,13 +231,42 @@
                             </div>
                         </div>
 
+                        <!-- Modal show -->
+                        <div class="modal fade" id="show{{ $entidad->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Detalles.</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body px-4 py-3">
+                                        <div class="row">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">
+                                                    <h3>nombreRepresentante: {{ $entidad->nombreRepresentante }}</h3>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <h3>apellidosRepresentante: {{ $entidad->apellidosRepresentante }}</h3>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <h3>fecha: {{ $entidad->created_at }}</h3>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Modal editar -->
                         <div class="modal fade" id="efg{{ $entidad->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
-                                <form class="row g-3" method="POST" action="{{ route('update.entidad', $entidad) }}">
+                                <form class="row g-3" method="POST"
+                                    action="{{ route('update.entidad', $entidad->id) }}">
                                     @csrf
-                                    @method('put')
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Entidad.</h1>
@@ -219,10 +282,6 @@
                                                             entidad *</label>
                                                         <select class="form-select" id="tipoEntidad_id" required
                                                             name="tipoEntidad_id">
-                                                            <option selected disabled
-                                                                value="{{ $entidad->tipoEntidad_id }}">
-                                                                {{ $entidad->tipoEntidad->nombre }}
-                                                            </option>
                                                             @foreach ($tipo_entidades as $tipo_entidad)
                                                                 <option value="{{ $tipo_entidad->id }}">
                                                                     {{ $tipo_entidad->nombre }}
@@ -262,7 +321,7 @@
                                                     <div class="mb-3">
                                                         <label for="exampleFormControlInput1" class="form-label">telefono
                                                             *</label>
-                                                        <input type="number" class="form-control" id="telefono"
+                                                        <input type="number" class="form-control" id="inputCrear"
                                                             placeholder="telefono" required name="telefono"
                                                             value="{{ $entidad->telefono }}">
                                                     </div>
@@ -373,5 +432,17 @@
                 tr[i].style.display = display;
             }
         }
+    </script>
+
+    {{-- Validar telef --}}
+    <script>
+        let input = document.querySelector('#inputCrear');
+        input.addEventListener('input', function() {
+            let valor = this.value;
+            let regex = /^\d{0,7}$/;
+            if (!regex.test(valor)) {
+                this.value = valor.slice(0, -1);
+            }
+        });
     </script>
 @endsection

@@ -21,6 +21,12 @@
     {{-- css mine --}}
     {{-- <link rel="stylesheet" href="/css/mio.css"> --}}
     <!-- Scripts -->
+
+    {{-- Toatr --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
