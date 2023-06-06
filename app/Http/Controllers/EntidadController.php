@@ -64,7 +64,7 @@ class EntidadController extends Controller
     {
         $entidad = new Entidad();
         $entidad = Entidad::find($id);
-        $entidad ->TipoEntidad();
+        $entidad->TipoEntidad();
         return view('entidades.detalles', compact('entidad'));
     }
 
@@ -79,11 +79,38 @@ class EntidadController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(EntidadRequest $request, Entidad $entidad)
+    public function update(Request $request, $id)
     {
-
-        $datos = $request->validated();
-        $entidad ->update($datos);
+        $request->validate(
+            [
+                'nombre'=>'string|required',
+                'tipoEntidad_id'=>'integer|required',
+                'nombreRepresentante'=>'string|required',
+                'apellidosRepresentante'=>'string|required',
+                'telefono'=>'string|required',
+                'direccion'=>'string|required',
+                'cuenta'=>'string|required',
+                'moneda'=>'string|required',
+                'codigoReeup'=>'string|required',
+                'codigoNit'=>'string|required',
+                'titular'=>'string|required',
+            ]
+        );
+        $entidad = Entidad::find($id);
+        $datos_actualizados = [
+            'nombre' => $entidad->nombre = $request->input('nombre'),
+            'tipoEntidad_id' => $entidad->tipoEntidad_id = $request->input('tipoEntidad_id'),
+            'nombreRepresentante' => $entidad->nombreRepresentante = $request->input('nombreRepresentante'),
+            'apellidosRepresentante' => $entidad->apellidosRepresentante = $request->input('apellidosRepresentante'),
+            'telefono' => $entidad->telefono = $request->input('telefono'),
+            'direccion' => $entidad->direccion = $request->input('direccion'),
+            'cuenta' => $entidad->cuenta = $request->input('cuenta'),
+            'moneda' => $entidad->moneda = $request->input('moneda'),
+            'codigoReeup' => $entidad->codigoReeup = $request->input('codigoReeup'),
+            'codigoNit' => $entidad->codigoNit = $request->input('codigoNit'),
+            'titular'=>$entidad->titular = $request->input('titular'),
+        ];
+        $entidad->update($datos_actualizados);
         return redirect()->route('entidades.mostrar');
 
         /*  $entidad = Entidad::find($id);
