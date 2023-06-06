@@ -1,14 +1,14 @@
 @extends('layouts.mainCliente')
 
 @section('content')
-    {{-- @if (session('status'))
+    @if (session('status'))
         <script>
             toastr.options = {
                 "closeButton": false,
                 "debug": false,
                 "newestOnTop": false,
                 "progressBar": false,
-                "positionClass": "toast-bottom-right",
+                "positionClass": "toast-top-right",
                 "preventDuplicates": false,
                 "onclick": null,
                 "showDuration": "300",
@@ -20,9 +20,9 @@
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
             };
-            toastr.info("{{ session('status') }}");
+            toastr.success("{{ session('status') }}");
         </script>
-    @endif --}}
+    @endif
 
     <div class="d-flex justify-content-between">
         <h1>Entidades</h1>
