@@ -18,10 +18,11 @@ class SolicitudController extends Controller
      */
     public function index()
     {
-        
+        $contratos = Contrato::all();
         $solicitudes = Solicitud::all();
+        $tipoSolitudes = TipoSolicitud::all();
 
-        return view('solicitudes.mostrar', compact('solicitudes'));
+        return view('solicitudes.mostrar', compact('solicitudes' , 'contratos', 'tipoSolitudes'));
     }
 
     /**

@@ -48,7 +48,7 @@
                         </li>
                         <hr class="hr hr-blurry" style="color: aliceblue" />
                         <li class="list-group-item">
-                            <a href="#">Home</a>
+                            <a href="{{ route('solicitudes.mostrar') }}">Solicitudes</a>
                         </li>
                         <hr class="hr hr-blurry" style="color: aliceblue" />
                         <li class="list-group-item">

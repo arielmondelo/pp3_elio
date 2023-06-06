@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\EntidadController;
 use App\Http\Controllers\CoordinadorController;
-use App\Http\Controllers\SolicitudesController;
+use App\Http\Controllers\SolicitudController;
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -49,7 +49,7 @@ Route::post('guardar.coordinador', [CoordinadorController::class, 'store'])->nam
 Route::post('update.coordinador/{id}', [CoordinadorController::class, 'update'])->name('update.coordinador');
 
 /* Solicitud */
-Route::get('solicitudes.mostrar', [SolicitudesController::class, 'index'])->name('solicitudes.mostrar');
-Route::post('/eliminarSolicitud/{id}', [SolicitudesController::class, 'eliminarSolicitud'])->name('eliminarSolicitud');
-Route::post('guardar.solicitud', [SolicitudesController::class, 'store'])->name('guardar.solicitud');
-Route::post('update.solicitud/{id}', [SolicitudesController::class, 'update'])->name('update.solicitud');
+Route::get('solicitudes.mostrar', [SolicitudController::class, 'index'])->name('solicitudes.mostrar');
+Route::post('/eliminarSolicitud/{id}', [SolicitudController::class, 'eliminarSolicitud'])->name('eliminarSolicitud');
+Route::post('guardar.solicitud', [SolicitudController::class, 'store'])->name('guardar.solicitud');
+Route::post('update.solicitud/{id}', [SolicitudController::class, 'update'])->name('update.solicitud');
