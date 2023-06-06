@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Coordinador;
 use Illuminate\Http\Request;
+use App\Http\Requests\CoordinadorRequest;
+
 
 class CoordinadorController extends Controller
 {
@@ -27,9 +29,11 @@ class CoordinadorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CoordinadorRequest $request)
     {
-        //
+        $coordinador = Coordinador::create($request->validated());
+        $coordinador->save();
+        return redirect()->route('#');
     }
 
     /**
@@ -62,5 +66,23 @@ class CoordinadorController extends Controller
     public function destroy(Coordinador $coordinador)
     {
         //
+    }
+    public function eliminarCoordinador(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            $coordinador = Coordinador::findOrFail($id);
+
+            if ($coordinador->delete()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => '¡Satisfactorio!, eliminado con éxito.',
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => '¡Error!, No se pudo eliminar.',
+                ]);
+            }
+        }
     }
 }
