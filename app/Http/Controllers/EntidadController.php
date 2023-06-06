@@ -64,7 +64,7 @@ class EntidadController extends Controller
        $entidad = new Entidad();
        $entidad = Entidad::find($id);
        $entidad ->TipoEntidad();
-       return wiew('entidades.detalles', compact('entidad'));
+       return view('entidades.detalles', compact('entidad'));
     
     }
 
