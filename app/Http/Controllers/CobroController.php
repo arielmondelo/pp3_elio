@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CobroRequest;
 use App\Models\Cobro;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,10 @@ class CobroController extends Controller
         return view('cobros', compact('cobros'));
     }
 
-    public function CobrosContratos() 
-    { 
-        $cobros = Cobro::with(['contratos'])->get(); 
-        return view('cobros', compact('cobros')); 
+    public function CobrosContratos()
+    {
+        $cobros = Cobro::with(['contratos'])->get();
+        return view('cobros', compact('cobros'));
     }
     /**
      * Show the form for creating a new resource.
@@ -32,9 +33,13 @@ class CobroController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CobroRequest $request)
     {
-        //
+        $cobro = Cobro::create($request->validated());
+        $cobro->tipoCobro_id = $request->input('tipoCobro_id');
+        $cobro->contratos()->sync($request->input('contratos', []));
+        $cobro->save();
+        return redirect()->route('cobros.mostrar');
     }
 
     /**

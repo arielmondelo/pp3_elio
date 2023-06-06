@@ -29,14 +29,13 @@ class Entidad extends Model
             'codigoReeup',
             'codigoNit',
             'titular',
-            'tipoEntidad_id'
         ];
-    
+
     public function contratos(): HasOne
     {
         return $this->hasOne(Contrato::class);
-    }    
-    
+    }
+
     public function tipoEntidad(): BelongsTo {
 
         return $this->belongsTo(TipoEntidad::class, 'tipoEntidad_id');

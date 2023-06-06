@@ -23,7 +23,7 @@ class Cobro extends Model
             'fecha',
             'nombreProducto',
             'descripcion',
-            'estado'
+            'estado',
         ];
 
     public function contratos(): BelongsToMany {

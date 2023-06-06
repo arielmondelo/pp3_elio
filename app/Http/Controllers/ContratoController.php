@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContratoRequest;
 use App\Models\Contrato;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,10 @@ class ContratoController extends Controller
         return view('contratos', compact('contratos'));
     }
 
-    public function CobrosContratos() 
-    { 
-        $contratos = Contrato::with(['cobros'])->get(); 
-        return view('contratos', compact('contratos')); 
+    public function CobrosContratos()
+    {
+        $contratos = Contrato::with(['cobros'])->get();
+        return view('contratos', compact('contratos'));
     }
     /**
      * Show the form for creating a new resource.
@@ -32,9 +33,14 @@ class ContratoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ContratoRequest $request)
     {
-        //
+        $contrato = Contrato::create($request->validated());
+        $contrato->entidad_id = $request->input('entidad_id');
+        $contrato->user_id = $request->input('user_id');
+        $contrato->cobros()->sync($request->input('cobros', []));
+        $contrato->save();
+        return redirect()->route('contratos.mostrar');
     }
 
     /**

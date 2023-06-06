@@ -25,8 +25,6 @@ class Contrato extends Model
             'descripcion',
             'estado',
             'monto',
-            'entidad_id',
-            //'cobro_id',
         ];
 
 

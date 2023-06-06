@@ -34,6 +34,7 @@ class EntidadController extends Controller
     public function store(EntidadRequest $request)
     {
         $entidad = Entidad::create($request->validated());
+        $entidad->tipoEntidad_id = $request->input('tipoEntidad_id');
         $entidad->save();
         return redirect()->route('entidades.mostrar');
     }
