@@ -17,7 +17,6 @@ class EntidadController extends Controller
         $entidades = Entidad::all();
         $tipo_entidades = TipoEntidad::all();
         return view('entidades.mostrar', compact('entidades', 'tipo_entidades'));
-
     }
 
     /**
@@ -32,12 +31,14 @@ class EntidadController extends Controller
      * Store a newly created resource in storage.
      */
 
-    public function store(EntidadRequest $request){
+    public function store(EntidadRequest $request)
+    {
         $entidad = Entidad::create($request->validated());
         $entidad->save();
         return redirect()->route('entidades.mostrar');
     }
-    public function guardarEntidad(Request $request)
+
+    /* public function guardarEntidad(Request $request)
     {
         $entidad = new Entidad();
         $entidad->nombre = $request->nombre;
@@ -54,18 +55,17 @@ class EntidadController extends Controller
         $entidad->save();
 
         return redirect()->route('entidades.mostrar');
-    }
+    } */
 
     /**
      * Display the specified resource.
      */
     public function show($id)
     {
-       $entidad = new Entidad();
-       $entidad = Entidad::find($id);
-       $entidad ->TipoEntidad();
-       return view('entidades.detalles', compact('entidad'));
-    
+        $entidad = new Entidad();
+        $entidad = Entidad::find($id);
+        $entidad ->TipoEntidad();
+        return view('entidades.detalles', compact('entidad'));
     }
 
     /**
@@ -79,9 +79,24 @@ class EntidadController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Entidad $entidad)
+    public function update(EntidadRequest $request, Entidad $entidad)
     {
-        //
+
+        $datos = $request->validated();
+        $entidad ->update($datos);
+        return redirect()->route('entidades.mostrar');
+
+        /*  $entidad = Entidad::find($id);
+         $datos = $request->validated();
+         $entidad->update($datos);
+
+          return redirect()->route('entidades.mostrar'); */
+        /* ->with('success', 'Entidad editada'); */
+
+        /* $request->session()->flash('alert-success', 'El contrato se ha guardado satisfactoriamente');
+        return redirect()->route('entidades.mostrar'); */
+
+        /* dd($request); */
     }
 
     /**

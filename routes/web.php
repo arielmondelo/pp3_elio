@@ -31,9 +31,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 /* Entidades */
 Route::get('entidades.mostrar', [EntidadController::class, 'index'])->name('entidades.mostrar');
 Route::post('/eliminarEntidad/{id}', [EntidadController::class, 'eliminarEntidad'])->name('eliminarEntidad');
-Route::post('guardar.entidad', [EntidadController::class, 'guardarEntidad'])->name('guardar.entidad');
+Route::post('guardar.entidad', [EntidadController::class, 'store'])->name('guardar.entidad');
+/* Route::post('update.entidad/{id}', [EntidadController::class, 'update'])->name('update.entidad'); */
+Route::put('update.entidad/{entidad}', [EntidadController::class, 'update'])->name('update.entidad');

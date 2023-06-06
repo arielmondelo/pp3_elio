@@ -28,7 +28,8 @@ class Entidad extends Model
             'moneda',
             'codigoReeup',
             'codigoNit',
-            'titular'
+            'titular',
+            'tipoEntidad_id'
         ];
     
     public function contratos(): HasOne
