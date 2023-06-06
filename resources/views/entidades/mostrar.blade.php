@@ -21,7 +21,7 @@
     <!-- Modal crear -->
     <div class="modal fade" id="abcd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-            <form class="row g-3" method="POST" action="{{ route('guardar.entidad') }}">
+            <form class="row g-3" method="post" action="{{ route('guardar.entidad') }}">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
@@ -201,8 +201,7 @@
                         <div class="modal fade" id="efg{{ $entidad->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
-                                <form class="row g-3" method="PUT"
-                                    action="{{ route('update.entidad', $entidad) }}">
+                                <form class="row g-3" method="post" action="{{ route('update.entidad', $entidad) }}">
                                     @csrf
                                     @method('put')
                                     <div class="modal-content">
