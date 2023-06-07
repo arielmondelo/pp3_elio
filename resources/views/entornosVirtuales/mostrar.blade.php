@@ -136,7 +136,7 @@
                     @foreach ($entornosVirtuales as $entornoVirtual)
                         <tr>
                             <td>{{ $entornoVirtual->nombreMV }}</td>
-                            <td>{{ $entornoVirtual->solicitud->numeroExpediente}}</td>{{-- arreglar --}}
+                            <td>{{ $entornoVirtual->solicitud_id}}</td>{{-- arreglar --}}
                             {{-- <td>{{ $entornoVirtuaol->estado }}</td> --}}
                             {{-- <td>{{ $coordinador->telefono }}</td> 
                             <td>{{ $coordinador->correo }}</td> --}}
@@ -258,7 +258,7 @@
                                                     <div class="mb-3">
                                                         <label for="exampleFormControlInput1" class="form-label">Solicitud *</label>
                                                         <select class="form-select" id="entidad_id" required name="entidad_id">
-                                        <!--   -->
+                                        
                                                             @foreach ($solicitudes as $solicitud)
                                                                 <option value="{{ $solicitud->id }}">
                                                                 {{ $solicitud->numeroExpediente }}
@@ -280,28 +280,33 @@
   
                                                 </div>
                                                 <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Memoria RAM  *</label>
-                                                    <input type="text" class="form-control" id="memoriaRAM" placeholder="telefono" value = "{{$entornoVirtual->memoriaRAM}}"
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Memoria RAM  *</label>
+                                                        <input type="text" class="form-control" id="memoriaRAM" placeholder="telefono" value = "{{$entornoVirtual->memoriaRAM}}"
                                                         required name="memoriaRAM">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Arquitectura *</label>
+                                                        <input type="text" class="form-control" id="arquitectura" placeholder="" value = "{{$entornoVirtual->arquitectura}}"  required name="arquitectura">
+                                                    </div>
+                                                    <div class="mb-3"><label for="exampleFormControlInput1" class="form-label">Sistema Operativo *</label>
+                                                        <input type="text" class="form-control" id="sistemaOperativo" placeholder="" value = "{{$entornoVirtual->arquitectura}}"  required name="sistemaOperativo">
+                                                    </div>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Arquitectura *</label>
-                                                    <input type="text" class="form-control" id="arquitectura" placeholder="" value = "{{$entornoVirtual->arquitectura}}"  required name="arquitectura">
-                                                </div>
-                                                <div class="mb-3"><label for="exampleFormControlInput1" class="form-label">Sistema Operativo *</label>
-                                                    <input type="text" class="form-control" id="sistemaOperativo" placeholder="" value = "{{$entornoVirtual->arquitectura}}"  required name="sistemaOperativo">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Contraseña *</label>
-                                                    <input type="text" class="form-control" id="contrasena" placeholder=""
-                                                    value = "{{$entornoVirtual->arquitectura}}"  required name="contrasena">
-                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Contraseña *</label>
+                                                        <input type="text" class="form-control" id="contrasena" placeholder=""
+                                                        value = "{{$entornoVirtual->arquitectura}}"  required name="contrasena">
+                                                    </div>
+                                            
+                                                </div>   
                                             </div>
-                                                
-                                        <div class="modal-footer px-4 py-3">
-                                            <button style="width:100%" class="btn btn-warning" type="submit"
+
+                                            <div class="modal-footer px-4 py-3">
+                                                <button style="width:100%" class="btn btn-warning" type="submit"
                                                 id="eliminarArticulo">Editar</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
