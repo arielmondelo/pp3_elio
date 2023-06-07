@@ -89,14 +89,14 @@
                                     <input type="text" class="form-control" id="sistemaOperativo" placeholder="Sistema Operativo"
                                         required name="sistemaOperativo">
                                 </div>
-                            </div>
-                            <div class="col-md-6">
+                                </div>
+                            
                                 <div class = "mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Contraseña </label>
                                     <input type="text" class="form-control" id="contrasena" placeholder="**********"
                                         required name="contrasena">
                                 </div>
-                            </div>    
+                            </div> 
 
                             
                             
@@ -254,59 +254,50 @@
 
                                         <div class="modal-body px-4 py-3">
                                             <div class="row">
-                                            <div class="col-md-6">
-                                    <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Solicitud *</label>
-                                    <select class="form-select" id="entidad_id" required name="entidad_id">
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Solicitud *</label>
+                                                        <select class="form-select" id="entidad_id" required name="entidad_id">
                                         <!--   -->
-                                        @foreach ($solicitudes as $solicitud)
-                                            <option value="{{ $solicitud->id }}">
-                                                {{ $solicitud->numeroExpediente }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                                            @foreach ($solicitudes as $solicitud)
+                                                                <option value="{{ $solicitud->id }}">
+                                                                {{ $solicitud->numeroExpediente }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Nombre de la MV *</label>
+                                                        <input type="text" class="form-control" id="nombreMV"  placeholder="Maquina Virtual" required
+                                                        name="nombreMV" value = "{{$entornoVirtual->nombreMV}}">
+                                                    </div>
 
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Nombre de la MV *</label>
-                                    <input type="text" class="form-control" id="nombreMV"  placeholder="Maquina Virtual" required
-                                        name="nombreMV" value = "{{$entornoVirtual->nombreMV}}">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Capacidad del disco Duro *</label>
-                                    <input type="text" class="form-control" id="capacidadDisco"
-                                        placeholder="" value = "{{$entornoVirtual->capacidadDisco}}" required name="capacidadDisco">
-                                </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Capacidad del disco Duro *</label>
+                                                        <input type="text" class="form-control" id="capacidadDisco"
+                                                        placeholder="" value = "{{$entornoVirtual->capacidadDisco}}" required name="capacidadDisco">
+                                                    </div>
   
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Memoria RAM  *</label>
-                                    <input type="text" class="form-control" id="memoriaRAM" placeholder="telefono" value = "{{$entornoVirtual->memoriaRAM}}"
-                                        required name="memoriaRAM">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Arquitectura *</label>
-                                    <input type="text" class="form-control" id="arquitectura" placeholder="Arquitectura"
-                                    value = "{{$entornoVirtual->arquitectura}}"  required name="arquitectura">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Arquitectura *</label>
-                                    <input type="text" class="form-control" id="arquitectura" placeholder="Arquitectura"
-                                    value = "{{$entornoVirtual->arquitectura}}"  required name="arquitectura">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Arquitectura *</label>
-                                    <input type="text" class="form-control" id="arquitectura" placeholder="Arquitectura"
-                                    value = "{{$entornoVirtual->arquitectura}}"  required name="arquitectura">
-                                </div>
-
-                            </div>
-
+                                                </div>
+                                                <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">Memoria RAM  *</label>
+                                                    <input type="text" class="form-control" id="memoriaRAM" placeholder="telefono" value = "{{$entornoVirtual->memoriaRAM}}"
+                                                        required name="memoriaRAM">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">Arquitectura *</label>
+                                                    <input type="text" class="form-control" id="arquitectura" placeholder="" value = "{{$entornoVirtual->arquitectura}}"  required name="arquitectura">
+                                                </div>
+                                                <div class="mb-3"><label for="exampleFormControlInput1" class="form-label">Sistema Operativo *</label>
+                                                    <input type="text" class="form-control" id="sistemaOperativo" placeholder="" value = "{{$entornoVirtual->arquitectura}}"  required name="sistemaOperativo">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">Contraseña *</label>
+                                                    <input type="text" class="form-control" id="contrasena" placeholder=""
+                                                    value = "{{$entornoVirtual->arquitectura}}"  required name="contrasena">
+                                                </div>
+                                            </div>
                                                 
                                         <div class="modal-footer px-4 py-3">
                                             <button style="width:100%" class="btn btn-warning" type="submit"
