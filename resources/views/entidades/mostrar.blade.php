@@ -58,66 +58,66 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">nombre *</label>
-                                    <input type="text" class="form-control" id="nombre" placeholder="nombre" required
+                                    <label for="exampleFormControlInput1" class="form-label">Nombre Entidad *</label>
+                                    <input type="text" class="form-control" id="nombre" placeholder="Escriba el nombre de la entidad" required
                                         name="nombre">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">nombreRepresentante *</label>
+                                    <label for="exampleFormControlInput1" class="form-label">Nombre del representante *</label>
                                     <input type="text" class="form-control" id="nombreRepresentante"
-                                        placeholder="nombreRepresentante" required name="nombreRepresentante">
+                                        placeholder="Escriba el nombre del representante" required name="nombreRepresentante">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">apellidosRepresentante
+                                    <label for="exampleFormControlInput1" class="form-label">Apellidos del Representante 
                                         *</label>
                                     <input type="text" class="form-control" id="apellidosRepresentante"
                                         placeholder="apellidosRepresentante" required name="apellidosRepresentante">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">telefono *</label>
-                                    <input type="number" class="form-control" id="inputCrear" placeholder="telefono"
+                                    <label for="exampleFormControlInput1" class="form-label">Telefono *</label>
+                                    <input type="number" class="form-control" id="inputCrear" placeholder="Telefono"
                                         required name="telefono">
                                 </div>
 
                                 <div class="">
-                                    <label for="exampleFormControlInput1" class="form-label">titular *</label>
-                                    <input type="text" class="form-control" id="titular" placeholder="titular" required
+                                    <label for="exampleFormControlInput1" class="form-label">Titular *</label>
+                                    <input type="text" class="form-control" id="titular" placeholder="Titular de la cuenta" required
                                         name="titular">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">direccion *</label>
-                                    <input type="text" class="form-control" id="direccion" placeholder="direccion"
+                                    <label for="exampleFormControlInput1" class="form-label">Direccion *</label>
+                                    <input type="text" class="form-control" id="direccion" placeholder="Direccion"
                                         required name="direccion">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">cuenta *</label>
-                                    <input type="text" class="form-control" id="cuenta" placeholder="cuenta" required
+                                    <label for="exampleFormControlInput1" class="form-label">Cuenta *</label>
+                                    <input type="text" class="form-control" id="cuenta" placeholder="Cuenta" required
                                         name="cuenta">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">moneda
+                                    <label for="exampleFormControlInput1" class="form-label"></label>Moneda
                                         *</label>
-                                    <input type="text" class="form-control" id="moneda" placeholder="moneda" required
+                                    <input type="text" class="form-control" id="moneda" placeholder="Moneda" required
                                         name="moneda">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">codigoReeup *</label>
+                                    <label for="exampleFormControlInput1" class="form-label">Codigo REEUP *</label>
                                     <input type="text" class="form-control" id="codigoReeup"
-                                        placeholder="codigoReeup" required name="codigoReeup">
+                                        placeholder="Codigo REEUP" required name="codigoReeup">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">codigoNit *</label>
-                                    <input type="text" class="form-control" id="codigoNit" placeholder="codigoNit"
+                                    <label for="exampleFormControlInput1" class="form-label">Codigo NIT *</label>
+                                    <input type="text" class="form-control" id="codigoNit" placeholder="Codigo NIT"
                                         required name="codigoNit">
                                 </div>
                             </div>

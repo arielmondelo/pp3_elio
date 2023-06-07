@@ -26,7 +26,7 @@
     @endif
 
     <div class="d-flex justify-content-between">
-        <h1>Coordinadores</h1>
+        <h1>Solicitudes</h1>
         <div class="modal-footer">
             <button style="width:100%" class="btn btn-success mx-4" type="submit" id="eliminarArticulo" data-bs-toggle="modal"
                 data-bs-target="#abcd">Crear</button>
@@ -67,12 +67,12 @@
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Fecha de inicio </label>
-                                    <input type="date" class="form-control" id="fechaInicio" placeholder="{{date()}}" 
+                                    <input type="date" class="form-control" id="fechaInicio" placeholder="AA/MM/YYYY" name="fechaInicio 
                                     name="fechaInicio">
                                 </div>      
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Fecha Fin </label>
-                                        <input type="date" class="form-control" id="fechaFin" placeholder="{{date()}}" 
+                                        <input type="date" class="form-control" id="fechaFin" placeholder="AA/MM/YYYY" 
                                             name="fechaFin">
                                     </div>
                                     <div class="mb-3">
@@ -265,79 +265,75 @@
 
                                         <div class="modal-body px-4 py-3">
                                             <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Tipo Solicitud *</label>
-                                                    <select class="form-select" id="tipoSolicitud_id" required name="tipoSolicitud_id">
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Tipo Solicitud *</label>
+                                                        <select class="form-select" id="tipoSolicitud_id" required name="tipoSolicitud_id">
                                                         <!-- <option selected disabled value="{{$tipoSolitudes->id}}">{{$tipoSolitudes->nombre}}</option> -->
                                                          @foreach ($tipoSolitudes as $tipoSolicitud)
                                                             <option value="{{ $tipoSolicitud->id }}">
-                                                            {{ $tipoSolicitud->nombre }}
+                                                                {{ $tipoSolicitud->nombre }}
                                                             </option>  
                                                         @endforeach
-                                                    </select>
-                                                </div>
+                                                        </select>
+                                                    </div>
                             
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">No. Expediente *</label>
-                                                    <input type="text" class="form-control" id="numeroExpediente" placeholder="Numero de Expediente" required
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">No. Expediente *</label>
+                                                        <input type="text" class="form-control" id="numeroExpediente" placeholder="Numero de Expediente" required
                                                          name="numeroExpediente" value="{{ $solicitud->numeroExpediente}}">
-                                                </div>    
+                                                    </div>    
 
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Fecha de inicio </label>
-                                                    <input type="date" class="form-control" id="fechaInicio" placeholder="{{date()}}" 
-                                                    name="fechaInicio" value="fechaInicio" >
-                                                </div>      
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Fecha Fin </label>
-                                                    <input type="date" class="form-control" id="fechaFin" placeholder="{{date()}}" 
-                                                    name="fechaFin" value="fechaFin">
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Fecha de inicio </label>
+                                                        <input type="date" class="form-control" id="fechaInicio" placeholder="{{date()}}" 
+                                                        name="fechaInicio" value="fechaInicio" >
+                                                    </div>      
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Fecha Fin </label>
+                                                        <input type="date" class="form-control" id="fechaFin" placeholder="{{date()}}" 
+                                                        name="fechaFin" value="fechaFin">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlTextarea1">Descripcion</label>
+                                                        <textarea class="form-control" id="descripcion" placeholder="Escribe una descripcion" 
+                                                        name="descripcion" value="descripcion"></textarea>
+                                                    </div>   
+
+                                                    <div class="mb-3">                                 
+                                                        <label for="exampleFormControlInput1" class="form-label">Contrato *</label>
+                                                        <select class="form-select" id="contrato_id" required name="contrato_id">
+                                                        
+                                                            @foreach ($contratos as $contrato)
+                                                                <option value="{{ $contrato->id }}">
+                                                                {{ $contrato->nombre }}
+                                                                </option>  
+                                                            @endforeach
+                                                        </select>
+                                                    </div> 
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlTextarea1">Descripcion</label>
-                                                    <textarea class="form-control" id="descripcion" placeholder="Escribe una descripcion" 
-                                                    name="descripcion" value="descripcion"></textarea>
-                                                </div>                                     
-                                                <label for="exampleFormControlInput1" class="form-label">Contrato *</label>
-                                                <select class="form-select" id="contrato_id" required name="contrato_id">
-                                                <option selected disabled value="{{}}">Seleccione ...</option>
-                                                    @foreach ($contratos as $contrato)
-                                                    <option value="{{ $contrato->id }}">
-                                                    {{ $contrato->nombre }}
-                                                    </option>  
-                                                    @endforeach
-                                                </select>
-                                 </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Nombre del Producto *</label>
+                                                        <input type="text" class="form-control" id="nombreProducto"
+                                                            placeholder="Producto" required name="nombreProducto" value = "$solicitud->nombreProducto" >
+                                                    </div>
+                            
                                 
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Nombre del Producto *</label>
-                                    <input type="text" class="form-control" id="nombreProducto"
-                                        placeholder="Producto" required name="nombreProducto">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Version *</label>
-                                    <input type="number" class="form-control" id="versionProducto" placeholder="v.1.0.0"
-                                        required name="versionProducto">
-                                </div>
-
-                                <!-- <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Correo *</label>
-                                    <input type="email" class="form-control" id="inputCrear" placeholder="correo"
-                                        required name="correo">
-                                </div> -->
-
-
-                                <!--  Falta estado -->
-
-
-
-                            </div>
-                                           
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Version *</label>
+                                                        <input type="number" class="form-control" id="versionProducto" placeholder="v.1.0.0"
+                                                            required name="versionProducto" value = "$solicitud->versionProducto">
+                                                    </div> 
+                                                    <!-- <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Correo *</label>
+                                                        <input type="email" class="form-control" id="inputCrear" placeholder="correo" required name="correo">
+                                                    </div> --><!--  Falta estado -->
+                                                </div>
+                                            </div>
+                                         </div>
                                             
-                                    
+                                        </div>
 
                                                 
                                         <div class="modal-footer px-4 py-3">
@@ -397,7 +393,7 @@
     </script>
 
     {{-- Validar telef --}}
-    <script>
+    <!-- <script>
         let input = document.querySelector('#inputCrear');
         input.addEventListener('input', function() {
             let valor = this.value;
@@ -406,5 +402,5 @@
                 this.value = valor.slice(0, -1);
             }
         });
-    </script>
+    </script> -->
 @endsection
