@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\EntornoVirtual;
+use App\Models\Solicitud;
+
 use Illuminate\Http\Request;
+use App\Http\Requests\EntornoVirtualRequest;
 
 class EntornoVirtualController extends Controller
 {
@@ -13,7 +16,8 @@ class EntornoVirtualController extends Controller
     public function index()
     {
         $entornosVirtuales = EntornoVirtual::all();
-        return view('entornosVirtuales', compact('entornosVirtuales'));
+        $solicitudes = Solicitud::all();
+        return view('entornosVirtuales', compact('entornosVirtuales' , 'solicitudes'));
     }
 
     /**
@@ -27,11 +31,14 @@ class EntornoVirtualController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EntornoVirtualRequest $request)
     {
-        //
+        $entornoVirtual = EntornoVirtual::create($request->validated());
+        $entornoVirtual->save();
+        return redirect()->route('entornoVirtual.mostrar');
     }
-
+    
+    
     /**
      * Display the specified resource.
      */

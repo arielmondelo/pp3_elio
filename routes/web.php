@@ -3,6 +3,7 @@
 use App\Http\Controllers\EntidadController;
 use App\Http\Controllers\CoordinadorController;
 use App\Http\Controllers\SolicitudController;
+use App\Http\Controllers\EntornoVirtualController;
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -53,3 +54,9 @@ Route::get('solicitudes.mostrar', [SolicitudController::class, 'index'])->name('
 Route::post('/eliminarSolicitud/{id}', [SolicitudController::class, 'eliminarSolicitud'])->name('eliminarSolicitud');
 Route::post('guardar.solicitud', [SolicitudController::class, 'store'])->name('guardar.solicitud');
 Route::post('update.solicitud/{id}', [SolicitudController::class, 'update'])->name('update.solicitud');
+
+/* Coordinador */
+Route::get('entornoVirtual.mostrar', [EntornoVirtualController::class, 'index'])->name('entornoVirtual.mostrar');
+Route::post('/eliminarEntornoVirtual/{id}', [EntornoVirtualController::class, 'eliminarEntornoVirtual'])->name('eliminarEntornoVirtual');
+Route::post('guardar.entornoVirtual', [EntornoVirtualController::class, 'store'])->name('guardar.entornoVirtual');
+Route::post('update.entornoVirtual/{id}', [EntornoVirtualController::class, 'update'])->name('update.entornoVirtual');
