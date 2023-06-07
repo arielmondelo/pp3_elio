@@ -11,7 +11,7 @@ class EntornoVirtualRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,7 @@ class EntornoVirtualRequest extends FormRequest
     {
         return [
             'nombreMV'=> 'string|required',
-            'estado' =>'string|required',
+            'estado' =>'string',
             'capacidadDisco' => 'double|required',
             'memoriaRAM' => 'float|required',
             'arquitectura'=>'string|required',

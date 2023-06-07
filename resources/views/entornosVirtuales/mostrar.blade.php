@@ -102,10 +102,11 @@
                             
 
                         </div>
-                    </div>
-                    <div class="modal-footer px-4 py-3">
-                        <button style="width:100%" class="btn btn-success" type="submit"
-                            id="eliminarArticulo">Crear</button>
+                    
+                        <div class="modal-footer px-4 py-3">
+                            <button style="width:100%" class="btn btn-success" type="submit"
+                                id="eliminarArticulo">Crear</button>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -125,9 +126,10 @@
                     <tr>
                         <th>Nombre MV</th>
                         <th>Solicitud</th>
-                        <th>Estado</th>
-                       {{-- <th>Telefono</th>
-                        <th>Correo</th> --}}
+                        <th>Sistema Operativo</th>
+                        <th>Disco duro</th>
+                        <th>RAM</th>
+                        <th></th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -136,7 +138,10 @@
                     @foreach ($entornosVirtuales as $entornoVirtual)
                         <tr>
                             <td>{{ $entornoVirtual->nombreMV }}</td>
-                            <td>{{ $entornoVirtual->solicitud_id}}</td>{{-- arreglar --}}
+                            <td>{{ $entornoVirtual->solicitud ? $entornoVirtual->solicitud->numeroExpediente : 'N/A' }}</td>
+                            <td>{{ $entornoVirtual->sistemaOperativo}}</td>
+                            <td>{{ $entornoVirtual->capacidadDisco}}</td>
+                            <td>{{ $entornoVirtual->memoriaRAM}}</td>
                             {{-- <td>{{ $entornoVirtuaol->estado }}</td> --}}
                             {{-- <td>{{ $coordinador->telefono }}</td> 
                             <td>{{ $coordinador->correo }}</td> --}}
@@ -257,11 +262,11 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label for="exampleFormControlInput1" class="form-label">Solicitud *</label>
-                                                        <select class="form-select" id="entidad_id" required name="entidad_id">
+                                                        <select class="form-select" id="solicitud_id" required name="solicitud_id">
                                         
                                                             @foreach ($solicitudes as $solicitud)
                                                                 <option value="{{ $solicitud->id }}">
-                                                                {{ $solicitud->numeroExpediente }}
+                                                                    {{ $solicitud->numeroExpediente }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
