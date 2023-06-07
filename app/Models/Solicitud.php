@@ -25,7 +25,7 @@ class Solicitud extends Model
             'descripcion',
             'nombreProducto',
             'versionProducto',
-            'contrato',
+            'contrato_id',
             'entidad_id',
             'tipoSolicitud_id', 
 
@@ -36,8 +36,11 @@ class Solicitud extends Model
         return $this->hasMany(EntornoVirtual::class);
     }
 
+    public function contrato():BelongsTo
+    {
+        return $this->belongsTo(Contrato::class, 'contrato_id');
+    }
      
-
     public function entidad():BelongsTo
     {
         return $this->belongsTo(Entidad::class, 'entidad_id');

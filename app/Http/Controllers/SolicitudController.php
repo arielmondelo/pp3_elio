@@ -73,7 +73,7 @@ class SolicitudController extends Controller
             'descripcion' => $request->descripcion,
             'nombreProducto' => $request->nombreProducto,
             'versionProducto' => $request->versionProducto,
-            'contrato' => $request->contrato,
+            'contrato_id' => $request->contrato_id,
             'entidad_id' => $request->entidad_id,
             'tipoSolicitud_id' => $request->tipoSolicitud_id, 
 

@@ -23,12 +23,12 @@ class SolicitudRequest extends FormRequest
     {
         return [
             'tipoSolicitud_id' =>'string|required',
-            'entidad_id' =>'string|required',
+            'entidad_id' =>'string',
             'contrato_id' =>'string|required',
             'numeroExpediente' =>'string|required',
             'fechaInicio' =>'date',
             'fechaFin' =>'date',
-            'estado' =>'string|required',
+            'estado' =>'string',
             'descripcion' =>'string',
             'nombreProducto' =>'string|required',
             'versionProducto' =>'string|required',
