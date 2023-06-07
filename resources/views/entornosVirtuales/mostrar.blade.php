@@ -26,7 +26,7 @@
     @endif
 
     <div class="d-flex justify-content-between">
-        <h1>Entornos Virtuales de la solicitud</h1>
+        <h1>Entornos Virtuales</h1>
         <div class="modal-footer">
             <button style="width:100%" class="btn btn-success mx-4" type="submit" id="eliminarArticulo" data-bs-toggle="modal"
                 data-bs-target="#abcd">Crear</button>
@@ -136,8 +136,8 @@
                     @foreach ($entornosVirtuales as $entornoVirtual)
                         <tr>
                             <td>{{ $entornoVirtual->nombreMV }}</td>
-                            <td>{{ $entornoVirtual->solicitud->numeroExpediente }}</td>
-                            <td>{{ $entornoVirtual->estado }}</td>
+                            <td>{{ $entornoVirtual->solicitud->numeroExpediente}}</td>{{-- arreglar --}}
+                            {{-- <td>{{ $entornoVirtuaol->estado }}</td> --}}
                             {{-- <td>{{ $coordinador->telefono }}</td> 
                             <td>{{ $coordinador->correo }}</td> --}}
 
@@ -239,15 +239,15 @@
                         </div>
 
                         <!-- Modal editar -->
-                        <div class="modal fade" id="efg{{ $coordinador->id }}" tabindex="-1"
+                        <div class="modal fade" id="efg{{ $entornoVirtual->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <form class="row g-3" method="POST"
-                                    action="{{ route('update.coordinador', $coordinador->id) }}">
+                                    action="{{ route('update.entornoVirtual', $entornoVirtual->id) }}">
                                     @csrf
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Coordinador.</h1>
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Entorno Virtual.</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
@@ -256,41 +256,41 @@
                                             <div class="row">
                                             <div class="col-md-6">
                                     <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Entidad *</label>
+                                    <label for="exampleFormControlInput1" class="form-label">Solicitud *</label>
                                     <select class="form-select" id="entidad_id" required name="entidad_id">
                                         <!--   -->
-                                        @foreach ($entidades as $entidad)
-                                            <option value="{{ $entidad->id }}">
-                                                {{ $entidad->nombre }}
+                                        @foreach ($solicitudes as $solicitud)
+                                            <option value="{{ $solicitud->id }}">
+                                                {{ $solicitud->numeroExpediente }}
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Nombre *</label>
-                                    <input type="text" class="form-control" id="nombre" placeholder="nombre" required
-                                        name="nombre" value = "{{$coordinador->nombre}}">
+                                    <label for="exampleFormControlInput1" class="form-label">Nombre de la MV *</label>
+                                    <input type="text" class="form-control" id="nombreMV"  placeholder="Maquina Virtual" required
+                                        name="nombreMV" value = "{{$entornoVirtual->nombreMV}}">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Apellidos *</label>
-                                    <input type="text" class="form-control" id="apellidos"
-                                        placeholder="apellidos" value = "{{$coordinador->apellidos}}" required name="apellidos">
+                                    <label for="exampleFormControlInput1" class="form-label">Capacidad del disco Duro *</label>
+                                    <input type="text" class="form-control" id="capacidadDisco"
+                                        placeholder="" value = "{{$entornoVirtual->capacidadDisco}}" required name="capacidadDisco">
                                 </div>
   
                             </div>
                             <div class="col-md-6">
                             <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">telefono *</label>
-                                    <input type="number" class="form-control" id="inputCrear" placeholder="telefono" value = "{{$coordinador->telefono}}"
-                                        required name="telefono">
+                                    <label for="exampleFormControlInput1" class="form-label">Memoria RAM  *</label>
+                                    <input type="text" class="form-control" id="memoriaRAM" placeholder="telefono" value = "{{$entornoVirtual->memoriaRAM}}"
+                                        required name="memoriaRAM">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Correo *</label>
-                                    <input type="email" class="form-control" id="inputCrear" placeholder="correo"
-                                    value = "{{$coordinador->correo}}"  required name="correo">
+                                    <label for="exampleFormControlInput1" class="form-label">Arquitectura *</label>
+                                    <input type="email" class="form-control" id="arquitectura" placeholder="Arquitectura"
+                                    value = "{{$entornoVirtual->arquitectura}}"  required name="arquitectura">
                                 </div>
                                 </div>
 
@@ -317,7 +317,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/eliminarCoordinador/' + id,
+                url: '/eliminarEntornoVirtual/' + id,
                 type: 'POST',
                 success: function(result) {
                     location.reload();
@@ -351,7 +351,7 @@
         }
     </script>
 
-    {{-- Validar telef --}}
+ {{-- Validar telef
     <script>
         let input = document.querySelector('#inputCrear');
         input.addEventListener('input', function() {
@@ -361,5 +361,6 @@
                 this.value = valor.slice(0, -1);
             }
         });
-    </script>
+    </script> --}}
+    
 @endsection

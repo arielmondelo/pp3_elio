@@ -52,7 +52,7 @@
                         </li>
                         <hr class="hr hr-blurry" style="color: aliceblue" />
                         <li class="list-group-item">
-                            <a href="#">Home</a>
+                            <a href="{{ route('entornosVirtuales.mostrar') }}">Entornos Virtuales</a>
                         </li>
                     </ul>
                 </div>

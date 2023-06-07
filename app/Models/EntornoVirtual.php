@@ -25,6 +25,8 @@ class EntornoVirtual extends Model
             'arquitectura',
             'sistemaOperativo',
             'contrasena',
+            'solicitud_id'
+
         ];
 
 

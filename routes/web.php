@@ -56,7 +56,7 @@ Route::post('guardar.solicitud', [SolicitudController::class, 'store'])->name('g
 Route::post('update.solicitud/{id}', [SolicitudController::class, 'update'])->name('update.solicitud');
 
 /* Coordinador */
-Route::get('entornoVirtual.mostrar', [EntornoVirtualController::class, 'index'])->name('entornoVirtual.mostrar');
+Route::get('entornosVirtuales.mostrar', [EntornoVirtualController::class, 'index'])->name('entornosVirtuales.mostrar');
 Route::post('/eliminarEntornoVirtual/{id}', [EntornoVirtualController::class, 'eliminarEntornoVirtual'])->name('eliminarEntornoVirtual');
 Route::post('guardar.entornoVirtual', [EntornoVirtualController::class, 'store'])->name('guardar.entornoVirtual');
 Route::post('update.entornoVirtual/{id}', [EntornoVirtualController::class, 'update'])->name('update.entornoVirtual');

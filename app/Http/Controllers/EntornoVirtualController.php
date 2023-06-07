@@ -17,7 +17,7 @@ class EntornoVirtualController extends Controller
     {
         $entornosVirtuales = EntornoVirtual::all();
         $solicitudes = Solicitud::all();
-        return view('entornosVirtuales', compact('entornosVirtuales' , 'solicitudes'));
+        return view('entornosVirtuales.mostrar', compact('entornosVirtuales' , 'solicitudes'));
     }
 
     /**
@@ -35,7 +35,7 @@ class EntornoVirtualController extends Controller
     {
         $entornoVirtual = EntornoVirtual::create($request->validated());
         $entornoVirtual->save();
-        return redirect()->route('entornoVirtual.mostrar');
+        return redirect()->route('entornosVirtuales.mostrar');
     }
     
     
@@ -58,16 +58,47 @@ class EntornoVirtualController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, EntornoVirtual $entornoVirtual)
+    public function update(Request $request, $id)
     {
-        //
+        EntornoVirtual::where('id', $id)
+        ->update([
+        'nombreMV' => $request->nombreMV,
+        'estado' => $request->estado,
+        'capacidadDisco' => $request->capacidadDisco,
+        'memoriaRAM' => $request->memoriaRAM,
+        'arquitectura' => $request->arquitectura,
+        'sistemaOperativo' => $request->sistemaOperativo,
+        'contrasena' => $request->contrasena,
+    ]);
+
+        /* return redirect()->route('entidades.mostrar'); */
+        /* ->with('success', 'Entidad editada'); */
+
+        session()->flash('status', 'Maquina Virtual editado con éxito');
+
+        return redirect()->route('entornosVirtuales.mostrar');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(EntornoVirtual $entornoVirtual)
+   
+    public function eliminarEntornoVirtual(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            $entornoVirtual = EntornoVirtual::findOrFail($id);
+
+            if ($entornoVirtual->delete()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => '¡Satisfactorio!, eliminado con éxito.',
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => '¡Error!, No se pudo eliminar.',
+                ]);
+            }
+        }
     }
 }
