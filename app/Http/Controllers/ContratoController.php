@@ -36,8 +36,6 @@ class ContratoController extends Controller
     public function store(ContratoRequest $request)
     {
         $contrato = Contrato::create($request->validated());
-        $contrato->entidad_id = $request->input('entidad_id');
-        $contrato->user_id = $request->input('user_id');
         $contrato->cobros()->sync($request->input('cobros', []));
         $contrato->save();
         return redirect()->route('contratos.mostrar');

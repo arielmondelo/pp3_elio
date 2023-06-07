@@ -36,7 +36,6 @@ class CobroController extends Controller
     public function store(CobroRequest $request)
     {
         $cobro = Cobro::create($request->validated());
-        $cobro->tipoCobro_id = $request->input('tipoCobro_id');
         $cobro->contratos()->sync($request->input('contratos', []));
         $cobro->save();
         return redirect()->route('cobros.mostrar');
