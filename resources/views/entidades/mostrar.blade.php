@@ -216,7 +216,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <h5>Está seguro que quiere aliminar la Entidad
+                                            <h5>Está seguro que quiere eliminar la Entidad
                                                 <strong>{{ $entidad->nombre }}</strong> ?
                                             </h5>
                                         </div>
