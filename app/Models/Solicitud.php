@@ -33,7 +33,7 @@ class Solicitud extends Model
 
     public function entornosVirtuales(): HasMany
     {
-        return $this->hasMany(EntornoVirtual::class);
+        return $this->hasMany(EntornoVirtual::class, 'solicitud_id');
     }
 
     public function contrato():BelongsTo

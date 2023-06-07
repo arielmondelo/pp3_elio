@@ -281,7 +281,7 @@
   
                             </div>
                             <div class="col-md-6">
-                            <div class="mb-3">
+                                <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Memoria RAM  *</label>
                                     <input type="text" class="form-control" id="memoriaRAM" placeholder="telefono" value = "{{$entornoVirtual->memoriaRAM}}"
                                         required name="memoriaRAM">
@@ -289,10 +289,23 @@
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Arquitectura *</label>
-                                    <input type="email" class="form-control" id="arquitectura" placeholder="Arquitectura"
+                                    <input type="text" class="form-control" id="arquitectura" placeholder="Arquitectura"
                                     value = "{{$entornoVirtual->arquitectura}}"  required name="arquitectura">
                                 </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Arquitectura *</label>
+                                    <input type="text" class="form-control" id="arquitectura" placeholder="Arquitectura"
+                                    value = "{{$entornoVirtual->arquitectura}}"  required name="arquitectura">
                                 </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Arquitectura *</label>
+                                    <input type="text" class="form-control" id="arquitectura" placeholder="Arquitectura"
+                                    value = "{{$entornoVirtual->arquitectura}}"  required name="arquitectura">
+                                </div>
+
+                            </div>
 
                                                 
                                         <div class="modal-footer px-4 py-3">
