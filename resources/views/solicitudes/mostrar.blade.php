@@ -1,4 +1,3 @@
-
 @extends('layouts.mainCliente')
 
 @section('content')
@@ -54,67 +53,55 @@
                                         @foreach ($tipoSolitudes as $tipoSolicitud)
                                             <option value="{{ $tipoSolicitud->id }}">
                                                 {{ $tipoSolicitud->nombre }}
-                                            </option>  
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
-                            
+
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">No. Expediente *</label>
-                                    <input type="text" class="form-control" id="numeroExpediente" placeholder="Numero de Expediente" required
-                                        name="numeroExpediente">
-                                </div>    
+                                    <input type="text" class="form-control" id="numeroExpediente"
+                                        placeholder="Numero de Expediente" required name="numeroExpediente">
+                                </div>
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Fecha de inicio </label>
-                                    <input type="date" class="form-control" id="fechaInicio" placeholder="AA/MM/YYYY" name="fechaInicio 
+                                    <input type="date" class="form-control" id="fechaInicio" placeholder="AA/MM/YYYY"
+                                        name="fechaInicio 
                                     name="fechaInicio">
-                                </div>      
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Fecha Fin </label>
-                                        <input type="date" class="form-control" id="fechaFin" placeholder="AA/MM/YYYY" 
-                                            name="fechaFin">
-                                    </div>
-                                    <div class="mb-3">
-                                    <label for="exampleFormControlTextarea1">Descripcion</label>
-                                    <textarea class="form-control" id="descripcion" placeholder="Escribe una descripcion" 
-                                            name="descripcion"></textarea>
-                                    </div>                                     
-                                    <label for="exampleFormControlInput1" class="form-label">Contrato *</label>
-                                    <select class="form-select" id="contrato_id" required name="contrato_id">
-                                        <option selected disabled value="">Seleccione ...</option>
-                                         @foreach ($contratos as $contrato)
-                                            <option value="{{ $contrato->id }}">
-                                                {{ $contrato->nombre }}
-                                            </option>  
-                                        @endforeach
-                                    </select>
-                                 </div>
-                                
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Fecha Fin </label>
+                                    <input type="date" class="form-control" id="fechaFin" placeholder="AA/MM/YYYY"
+                                        name="fechaFin">
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Contrato *</label>
+                                    <select class="form-select" id="contrato_id" required name="contrato_id">
+                                        <option selected disabled value="">Seleccione ...</option>
+                                        @foreach ($contratos as $contrato)
+                                            <option value="{{ $contrato->id }}">
+                                                {{ $contrato->nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Nombre del Producto *</label>
-                                    <input type="text" class="form-control" id="nombreProducto"
-                                        placeholder="Producto" required name="nombreProducto">
+                                    <input type="text" class="form-control" id="nombreProducto" placeholder="Producto"
+                                        required name="nombreProducto">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Version *</label>
                                     <input type="number" class="form-control" id="versionProducto" placeholder="v.1.0.0"
                                         required name="versionProducto">
                                 </div>
-
-                                <!-- <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Correo *</label>
-                                    <input type="email" class="form-control" id="inputCrear" placeholder="correo"
-                                        required name="correo">
-                                </div> -->
-
-
-                                <!--  Falta estado -->
-
-
-
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="mb-2">Descripcion</label>
+                                    <textarea class="form-control" id="descripcion" placeholder="Escribe una descripcion" name="descripcion"></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -127,7 +114,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row px-5">
         <div class="col-md-12 my-3 mb-4">
             <form class="d-flex justify-content-end">
                 <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar" id="q"
@@ -152,9 +139,9 @@
                     @foreach ($solicitudes as $solicitud)
                         <tr>
                             <td>{{ $solicitud->numeroExpediente }}</td>
-                            <td>{{ $solicitud->tipoSolicitud->nombre}}</td>
+                            <td>{{ $solicitud->tipoSolicitud->nombre }}</td>
                             <td>{{ $solicitud->contrato->numeroContrato }}</td>
-                            <td>{{ $solicitud->estado }}</td> 
+                            <td>{{ $solicitud->estado }}</td>
                             <td>{{ $solicitud->nombreProducto }}</td>
                             <td>{{ $solicitud->versionProducto }}</td>
 
@@ -201,7 +188,7 @@
                                     <div class="modal-body">
                                         <div class="mb-3">
                                             <h5>Está seguro que quieres eliminar la Solicitud? </h5>
-                                                <strong>{{ $solicitud->numeroExpediente }}</strong> ?
+                                            <strong>{{ $solicitud->numeroExpediente }}</strong> ?
                                             </h5>
                                         </div>
                                     </div>
@@ -228,7 +215,8 @@
                                         <div class="row">
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item">
-                                                    <h3>Pertenece al contrato: {{ $solicitud->contrato->numeroContrato }}</h3>
+                                                    <h3>Pertenece al contrato: {{ $solicitud->contrato->numeroContrato }}
+                                                    </h3>
                                                 </li>
                                                 <li class="list-group-item">
                                                     <h3>Nombre del producto: {{ $solicitud->nombreProducto }}</h3>
@@ -237,11 +225,11 @@
                                                     <h3>Fecha de inicio: {{ $solicitud->fechaInicio }}</h3>
                                                 </li>
                                                 <!-- <li class="list-group-item">
-                                                    <h3>Telefono: {{ $coordinador->telefono }}</h3>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <h3>Correo: {{ $coordinador->correo }}</h3>
-                                                </li>  -->
+                                                                                            <h3>Telefono: {{ $coordinador->telefono }}</h3>
+                                                                                        </li>
+                                                                                        <li class="list-group-item">
+                                                                                            <h3>Correo: {{ $coordinador->correo }}</h3>
+                                                                                        </li>  -->
                                             </ul>
                                         </div>
                                     </div>
@@ -267,87 +255,103 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">Tipo Solicitud *</label>
-                                                        <select class="form-select" id="tipoSolicitud_id" required name="tipoSolicitud_id">
-                                                        <!-- <option selected disabled value="{{$tipoSolitudes->id}}">{{$tipoSolitudes->nombre}}</option> -->
-                                                         @foreach ($tipoSolitudes as $tipoSolicitud)
-                                                            <option value="{{ $tipoSolicitud->id }}">
-                                                                {{ $tipoSolicitud->nombre }}
-                                                            </option>  
-                                                        @endforeach
+                                                        <label for="exampleFormControlInput1" class="form-label">Tipo
+                                                            Solicitud *</label>
+                                                        <select class="form-select" id="tipoSolicitud_id" required
+                                                            name="tipoSolicitud_id">
+                                                            <!-- <option selected disabled value="{{ $tipoSolitudes->id }}">{{ $tipoSolitudes->nombre }}</option> -->
+                                                            @foreach ($tipoSolitudes as $tipoSolicitud)
+                                                                <option value="{{ $tipoSolicitud->id }}">
+                                                                    {{ $tipoSolicitud->nombre }}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
-                            
-                                                    <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">No. Expediente *</label>
-                                                        <input type="text" class="form-control" id="numeroExpediente" placeholder="Numero de Expediente" required
-                                                         name="numeroExpediente" value="{{ $solicitud->numeroExpediente}}">
-                                                    </div>    
 
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">Fecha de inicio </label>
-                                                        <input type="date" class="form-control" id="fechaInicio" placeholder="{{date()}}" 
-                                                        name="fechaInicio" value="fechaInicio" >
-                                                    </div>      
+                                                        <label for="exampleFormControlInput1" class="form-label">No.
+                                                            Expediente *</label>
+                                                        <input type="text" class="form-control" id="numeroExpediente"
+                                                            placeholder="Numero de Expediente" required
+                                                            name="numeroExpediente"
+                                                            value="{{ $solicitud->numeroExpediente }}">
+                                                    </div>
+
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">Fecha Fin </label>
-                                                        <input type="date" class="form-control" id="fechaFin" placeholder="{{date()}}" 
-                                                        name="fechaFin" value="fechaFin">
+                                                        <label for="exampleFormControlInput1" class="form-label">Fecha de
+                                                            inicio </label>
+                                                        <input type="date" class="form-control" id="fechaInicio"
+                                                            placeholder="{{ date() }}" name="fechaInicio"
+                                                            value="fechaInicio">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Fecha Fin
+                                                        </label>
+                                                        <input type="date" class="form-control" id="fechaFin"
+                                                            placeholder="{{ date() }}" name="fechaFin"
+                                                            value="fechaFin">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="exampleFormControlTextarea1">Descripcion</label>
-                                                        <textarea class="form-control" id="descripcion" placeholder="Escribe una descripcion" 
-                                                        name="descripcion" value="descripcion"></textarea>
-                                                    </div>   
+                                                        <textarea class="form-control" id="descripcion" placeholder="Escribe una descripcion" name="descripcion"
+                                                            value="descripcion"></textarea>
+                                                    </div>
 
-                                                    <div class="mb-3">                                 
-                                                        <label for="exampleFormControlInput1" class="form-label">Contrato *</label>
-                                                        <select class="form-select" id="contrato_id" required name="contrato_id">
-                                                        
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Contrato
+                                                            *</label>
+                                                        <select class="form-select" id="contrato_id" required
+                                                            name="contrato_id">
+
                                                             @foreach ($contratos as $contrato)
                                                                 <option value="{{ $contrato->id }}">
-                                                                {{ $contrato->nombre }}
-                                                                </option>  
+                                                                    {{ $contrato->nombre }}
+                                                                </option>
                                                             @endforeach
                                                         </select>
-                                                    </div> 
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">Nombre del Producto *</label>
+                                                        <label for="exampleFormControlInput1" class="form-label">Nombre
+                                                            del Producto *</label>
                                                         <input type="text" class="form-control" id="nombreProducto"
-                                                            placeholder="Producto" required name="nombreProducto" value = "$solicitud->nombreProducto" >
+                                                            placeholder="Producto" required name="nombreProducto"
+                                                            value="$solicitud->nombreProducto">
                                                     </div>
-                            
-                                
+
+
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">Version *</label>
-                                                        <input type="number" class="form-control" id="versionProducto" placeholder="v.1.0.0"
-                                                            required name="versionProducto" value = "$solicitud->versionProducto">
-                                                    </div> 
+                                                        <label for="exampleFormControlInput1" class="form-label">Version
+                                                            *</label>
+                                                        <input type="number" class="form-control" id="versionProducto"
+                                                            placeholder="v.1.0.0" required name="versionProducto"
+                                                            value="$solicitud->versionProducto">
+                                                    </div>
                                                     <!-- <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">Correo *</label>
-                                                        <input type="email" class="form-control" id="inputCrear" placeholder="correo" required name="correo">
-                                                    </div> --><!--  Falta estado -->
+                                                                                                <label for="exampleFormControlInput1" class="form-label">Correo *</label>
+                                                                                                <input type="email" class="form-control" id="inputCrear" placeholder="correo" required name="correo">
+                                                                                            </div> -->
+                                                    <!--  Falta estado -->
                                                 </div>
                                             </div>
-                                         </div>
-                                            
                                         </div>
 
-                                                
-                                        <div class="modal-footer px-4 py-3">
-                                            <button style="width:100%" class="btn btn-warning" type="submit"
-                                                id="eliminarArticulo">Editar</button>
-                                        </div>
                                     </div>
-                                </form>
+
+
+                                    <div class="modal-footer px-4 py-3">
+                                        <button style="width:100%" class="btn btn-warning" type="submit"
+                                            id="eliminarArticulo">Editar</button>
+                                    </div>
                             </div>
+                            </form>
                         </div>
-                    @endforeach
-                </tbody>
-            </table>
         </div>
+        @endforeach
+        </tbody>
+        </table>
+    </div>
     </div>
 
 
