@@ -20,6 +20,7 @@ class Entidad extends Model
     protected $fillable =
         [
             'nombre',
+            'tipoEntidad_id',
             'nombreRepresentante',
             'apellidosRepresentante',
             'telefono',

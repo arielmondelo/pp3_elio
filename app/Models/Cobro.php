@@ -19,6 +19,7 @@ class Cobro extends Model
 
     protected $fillable =
         [
+            'tipoCobro_id',
             'monto',
             'fecha',
             'nombreProducto',
