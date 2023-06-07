@@ -269,45 +269,45 @@
                                                 <div class="mb-3">
                                                     <label for="exampleFormControlInput1" class="form-label">Tipo Solicitud *</label>
                                                     <select class="form-select" id="tipoSolicitud_id" required name="tipoSolicitud_id">
-                                                        <option selected disabled value="{{$}}">Seleccione tipo</option>
+                                                        <!-- <option selected disabled value="{{$tipoSolitudes->id}}">{{$tipoSolitudes->nombre}}</option> -->
                                                          @foreach ($tipoSolitudes as $tipoSolicitud)
                                                             <option value="{{ $tipoSolicitud->id }}">
                                                             {{ $tipoSolicitud->nombre }}
                                                             </option>  
                                                         @endforeach
-                                    </select>
-                                </div>
+                                                    </select>
+                                                </div>
                             
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">No. Expediente *</label>
-                                    <input type="text" class="form-control" id="numeroExpediente" placeholder="Numero de Expediente" required
-                                        name="numeroExpediente">
-                                </div>    
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">No. Expediente *</label>
+                                                    <input type="text" class="form-control" id="numeroExpediente" placeholder="Numero de Expediente" required
+                                                         name="numeroExpediente" value="{{ $solicitud->numeroExpediente}}">
+                                                </div>    
 
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Fecha de inicio </label>
-                                    <input type="date" class="form-control" id="fechaInicio" placeholder="{{date()}}" 
-                                    name="fechaInicio">
-                                </div>      
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Fecha Fin </label>
-                                        <input type="date" class="form-control" id="fechaFin" placeholder="{{date()}}" 
-                                            name="fechaFin">
-                                    </div>
-                                    <div class="mb-3">
-                                    <label for="exampleFormControlTextarea1">Descripcion</label>
-                                    <textarea class="form-control" id="descripcion" placeholder="Escribe una descripcion" 
-                                            name="descripcion"></textarea>
-                                    </div>                                     
-                                    <label for="exampleFormControlInput1" class="form-label">Contrato *</label>
-                                    <select class="form-select" id="contrato_id" required name="contrato_id">
-                                        <option selected disabled value="">Seleccione ...</option>
-                                         @foreach ($contratos as $contrato)
-                                            <option value="{{ $contrato->id }}">
-                                                {{ $contrato->nombre }}
-                                            </option>  
-                                        @endforeach
-                                    </select>
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">Fecha de inicio </label>
+                                                    <input type="date" class="form-control" id="fechaInicio" placeholder="{{date()}}" 
+                                                    name="fechaInicio" value="fechaInicio" >
+                                                </div>      
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">Fecha Fin </label>
+                                                    <input type="date" class="form-control" id="fechaFin" placeholder="{{date()}}" 
+                                                    name="fechaFin" value="fechaFin">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlTextarea1">Descripcion</label>
+                                                    <textarea class="form-control" id="descripcion" placeholder="Escribe una descripcion" 
+                                                    name="descripcion" value="descripcion"></textarea>
+                                                </div>                                     
+                                                <label for="exampleFormControlInput1" class="form-label">Contrato *</label>
+                                                <select class="form-select" id="contrato_id" required name="contrato_id">
+                                                <option selected disabled value="{{}}">Seleccione ...</option>
+                                                    @foreach ($contratos as $contrato)
+                                                    <option value="{{ $contrato->id }}">
+                                                    {{ $contrato->nombre }}
+                                                    </option>  
+                                                    @endforeach
+                                                </select>
                                  </div>
                                 
                             </div>
