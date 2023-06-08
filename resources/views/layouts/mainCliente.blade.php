@@ -54,6 +54,11 @@
                         <li class="list-group-item">
                             <a href="{{ route('entornosVirtuales.mostrar') }}">Entornos Virtuales</a>
                         </li>
+                        
+                        <hr class="hr hr-blurry" style="color: aliceblue" />
+                        <li class="list-group-item">
+                            <a href="{{ route('contratos.mostrar') }}">Contratos</a>
+                        </li>
                     </ul>
                 </div>
             </nav>

@@ -29,9 +29,9 @@ class ContratoRequest extends FormRequest
             'numeroContrato'=>'string|required',
             'fechaInicio'=>'date|required',
             'fechaFin'=>'date|required',
-            'estado'=>'string|required',
+            'estado'=>'string',
             'monto'=>'required',
-            'descripcion'=>'string|required'
+            'descripcion'=>'string'
         ];
     }
 }

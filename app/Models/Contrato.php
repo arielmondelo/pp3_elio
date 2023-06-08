@@ -34,6 +34,10 @@ class Contrato extends Model
 
         return $this->belongsTo(Entidad::class, 'entidad_id');
     }
+    public function usuario():BelongsTo{
+
+        return $this->belongsTo(Entidad::class, 'user_id');
+    }
 
     public function cobros(): BelongsToMany {
 

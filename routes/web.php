@@ -4,6 +4,7 @@ use App\Http\Controllers\EntidadController;
 use App\Http\Controllers\CoordinadorController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\EntornoVirtualController;
+use App\Http\Controllers\ContratoController;
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -55,8 +56,14 @@ Route::post('/eliminarSolicitud/{id}', [SolicitudController::class, 'eliminarSol
 Route::post('guardar.solicitud', [SolicitudController::class, 'store'])->name('guardar.solicitud');
 Route::post('update.solicitud/{id}', [SolicitudController::class, 'update'])->name('update.solicitud');
 
-/* Coordinador */
+/* Entorno Virtual */
 Route::get('entornosVirtuales.mostrar', [EntornoVirtualController::class, 'index'])->name('entornosVirtuales.mostrar');
 Route::post('/eliminarEntornoVirtual/{id}', [EntornoVirtualController::class, 'eliminarEntornoVirtual'])->name('eliminarEntornoVirtual');
 Route::post('guardar.entornoVirtual', [EntornoVirtualController::class, 'store'])->name('guardar.entornoVirtual');
 Route::post('update.entornoVirtual/{id}', [EntornoVirtualController::class, 'update'])->name('update.entornoVirtual');
+
+/* Contrato */
+Route::get('contratos.mostrar', [ContratoController::class, 'index'])->name('contratos.mostrar');
+Route::post('/eliminarContrato/{id}', [ContratoController::class, 'eliminarContrato'])->name('eliminarcContrato');
+Route::post('guardar.contrato', [ContratoController::class, 'store'])->name('guardar.contrato');
+Route::post('update.contrato/{id}', [ContratoController::class, 'update'])->name('update.contrato');

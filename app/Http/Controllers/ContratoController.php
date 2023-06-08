@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContratoRequest;
 use App\Models\Contrato;
+use App\Models\Entidad;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ContratoController extends Controller
@@ -14,7 +16,9 @@ class ContratoController extends Controller
     public function index()
     {
         $contratos = Contrato::all();
-        return view('contratos', compact('contratos'));
+        $entidades = Entidad::all();
+        $usuarios = User::all();
+        return view('contratos.mostrar', compact('contratos', 'entidades', 'usuarios'));
     }
 
     public function CobrosContratos()
@@ -36,7 +40,7 @@ class ContratoController extends Controller
     public function store(ContratoRequest $request)
     {
         $contrato = Contrato::create($request->validated());
-        $contrato->cobros()->sync($request->input('cobros', []));
+        /* $contrato->cobros()->sync($request->input('cobros', [])); */
         $contrato->save();
         return redirect()->route('contratos.mostrar');
     }

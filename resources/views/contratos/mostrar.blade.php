@@ -24,7 +24,7 @@
         </script>
     @endif
     <div class="d-flex justify-content-between">
-        <h1>Entidades</h1>
+        <h1>Contratos</h1>
         <div class="modal-footer">
             <button style="width:100%" class="btn btn-success mx-4" type="submit" id="eliminarArticulo" data-bs-toggle="modal"
                 data-bs-target="#abcd">Crear</button>
@@ -34,11 +34,11 @@
     <!-- Modal crear -->
     <div class="modal fade" id="abcd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-            <form class="row g-3" method="post" action="{{ route('guardar.entidad') }}">
+            <form class="row g-3" method="post" action="{{ route('guardar.contrato') }}">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Entidad.</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Contrato.</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
@@ -46,80 +46,63 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Tipo entidad *</label>
-                                    <select class="form-select" id="tipoEntidad_id" required name="tipoEntidad_id">
-                                        <option selected disabled value="">Seleccione tipo</option>
-                                        @foreach ($tipo_entidades as $tipo_entidad)
-                                            <option value="{{ $tipo_entidad->id }}">
-                                                {{ $tipo_entidad->nombre }}
+                                    <label for="exampleFormControlInput1" class="form-label">Entidad *</label>
+                                    <select class="form-select" id="entidad_id" required name="entidad_id">
+                                        <option selected disabled value="">Seleccione una entidad</option>
+                                        @foreach ($entidades as $entidad)
+                                            <option value="{{ $entidad->id }}">
+                                                {{ $entidad->nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Asignado a *</label>
+                                    <select class="form-select" id="user_id" required name="user_id">
+                                        <option selected disabled value="">Usuario</option>
+                                        @foreach ($usuarios as $usuario)
+                                            <option value="{{ $usuario->id }}">
+                                                {{ $usuario->name }}
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Nombre Entidad *</label>
-                                    <input type="text" class="form-control" id="nombre" placeholder="Escriba el nombre de la entidad" required
-                                        name="nombre">
+                                    <label for="exampleFormControlInput1" class="form-label">No. Contrato *</label>
+                                    <input type="text" class="form-control" id="numeroContrato" placeholder="No. Contrato" required
+                                        name="numeroContrato">
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Nombre del representante *</label>
-                                    <input type="text" class="form-control" id="nombreRepresentante"
-                                        placeholder="Escriba el nombre del representante" required name="nombreRepresentante">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Apellidos del Representante 
-                                        *</label>
-                                    <input type="text" class="form-control" id="apellidosRepresentante"
-                                        placeholder="apellidosRepresentante" required name="apellidosRepresentante">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Telefono *</label>
-                                    <input type="number" class="form-control" id="inputCrear" placeholder="Telefono"
-                                        required name="telefono">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Titular *</label>
-                                    <input type="text" class="form-control" id="titular" placeholder="Titular de la cuenta" required
-                                        name="titular">
-                                </div>
-                            </div>
-
+                            </div>   
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Direccion *</label>
-                                    <input type="text" class="form-control" id="direccion" placeholder="Direccion"
-                                        required name="direccion">
+                                    <label for="exampleFormControlInput1" class="form-label">Firmado *</label>
+                                    <input type="date" class="form-control" id="fechaInicio" placeholder="AAAA/MM/YYYY" 
+                                        required name="fechaInicio">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Vence *</label>
+                                    <input type="date" class="form-control" id="fechaFin" placeholder="AAAA/MM/YYYY" 
+                                        required name="fechaFin">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Cuenta *</label>
-                                    <input type="text" class="form-control" id="cuenta" placeholder="Cuenta" required
-                                        name="cuenta">
+                                    <label for="exampleFormControlInput1" class="form-label">Monto *</label>
+                                    <input type="number" class="form-control form-icon-trailing" id="monto" placeholder="Monto" required
+                                        name="monto">
                                 </div>
 
+                                
+                            </div>
+                            <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label"></label>Moneda
-                                        *</label>
-                                    <input type="text" class="form-control" id="moneda" placeholder="Moneda" required
-                                        name="moneda">
+                                    <label for="exampleFormControlInput1" class="form-label">Descripcion </label>
+                                    <textarea type="" class="form-control" id="descripcion" placeholder="Escribe una descripcion..." required
+                                        name="descripcion"></textarea>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Codigo REEUP *</label>
-                                    <input type="text" class="form-control" id="codigoReeup"
-                                        placeholder="Codigo REEUP" required name="codigoReeup">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Codigo NIT *</label>
-                                    <input type="text" class="form-control" id="codigoNit" placeholder="Codigo NIT"
-                                        required name="codigoNit">
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -143,39 +126,31 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>tipoEntidad_id</th>
-                        <th>nombre</th>
-                        {{-- <th>nombreRepresentante</th>
-                        <th>apellidosRepresentante</th> --}}
-                        <th>telefono</th>
-                        <th>direccion</th>
-                        <th>cuenta</th>
-                        <th>moneda</th>
-                        <th>codigoReeup</th>
-                        <th>codigoNit</th>
-                        <th>titular</th>
-                        {{-- <th>fecha</th> --}}
+                        <th>No. Contrato</th>
+                        <th>Entidad</th>
+                        <th>Vence </th>
+                        <th>Monto</th>
+                        <th>Asignado a</th>
+                        <th></th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody id="the_table_body">
-                    @foreach ($entidades as $entidad)
+                    @foreach ($contratos as $contrato)
                         <tr>
-                            <td>{{ $entidad->tipoEntidad->nombre }}</td>
-                            <td>{{ $entidad->nombre }}</td>
-                            {{--  <td>{{ $entidad->nombreRepresentante }}</td>
-                            <td>{{ $entidad->apellidosRepresentante }}</td> --}}
-                            <td>{{ $entidad->telefono }}</td>
-                            <td>{{ $entidad->direccion }}</td>
-                            <td>{{ $entidad->cuenta }}</td>
-                            <td>{{ $entidad->moneda }}</td>
+                            <td>{{ $contrato->numeroContrato }}</td>
+                            <td>{{ $contrato->entidad ? $contrato->entidad->nombre : 'N/A' }}</td>
+                            <td>{{ $contrato->fechaFin }}</td>
+                            <td>{{ $contrato->monto }}</td>
+                            <td>{{ $contrato->usuario ? $contrato->usuario->name : 'N/A' }}</td>
+                           {{--  <td>{{ $entidad->moneda }}</td>
                             <td>{{ $entidad->codigoReeup }}</td>
                             <td>{{ $entidad->codigoNit }}</td>
-                            <td>{{ $entidad->titular }}</td>
+                            <td>{{ $entidad->titular }}</td> --}}
                             {{-- <td>{{ $entidad->created_at }}</td> --}}
                             <td><button style="width: 100%" type="button" class="btn btn-primary"
-                                    data-bs-toggle="modal" data-bs-target="#show{{ $entidad->id }}">
+                                    data-bs-toggle="modal" data-bs-target="#show{{ $contrato->id }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                         fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                         <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
@@ -184,7 +159,7 @@
                                     </svg>
                                 </button></td>
                             <td><button style="width: 100%" type="button" class="btn btn-warning"
-                                    data-bs-toggle="modal" data-bs-target="#efg{{ $entidad->id }}">
+                                    data-bs-toggle="modal" data-bs-target="#efg{{ $contrato->id }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                         fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                         <path
@@ -194,7 +169,7 @@
                                     </svg>
                                 </button></td>
                             <td><button style="width: 100%" type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#abcd{{ $entidad->id }}">
+                                    data-bs-target="#abcd{{ $contrato->id }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                         fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -205,33 +180,33 @@
                         </tr>
 
                         <!-- Modal Eliminar -->
-                        <div class="modal fade" id="abcd{{ $entidad->id }}" tabindex="-1"
+                        <div class="modal fade" id="abcd{{ $contrato->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Entidad.</h1>
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Contrato.</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <h5>Está seguro que quiere eliminar la Entidad
-                                                <strong>{{ $entidad->nombre }}</strong> ?
+                                            <h5>Está seguro que quiere eliminar el contrato
+                                                <strong>{{ $contrato->numeroContrato }}</strong> ?
                                             </h5>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button style="width:100%" class="btn btn-danger" type="submit"
                                             id="eliminarArticulo"
-                                            onclick="eliminarEntidad({{ $entidad->id }})">Eliminar</button>
+                                            onclick="eliminarContrato({{ $contrato->id }})">Eliminar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Modal show -->
-                        <div class="modal fade" id="show{{ $entidad->id }}" tabindex="-1"
+                        <div class="modal fade" id="show{{ $contrato->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-md">
                                 <div class="modal-content">
@@ -244,13 +219,16 @@
                                         <div class="row">
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item">
-                                                    <h3>nombreRepresentante: {{ $entidad->nombreRepresentante }}</h3>
+                                                    <h3>No. Contrato: {{ $contrato->numeroContrato }}</h3>
                                                 </li>
                                                 <li class="list-group-item">
-                                                    <h3>apellidosRepresentante: {{ $entidad->apellidosRepresentante }}</h3>
+                                                    <h3>Firmado: {{ $contrato->fechaInicio }}</h3>
                                                 </li>
                                                 <li class="list-group-item">
-                                                    <h3>fecha: {{ $entidad->created_at }}</h3>
+                                                    <h3>Vence: {{ $contrato->fechaFin }}</h3>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <h3>Monto: {{ $contrato->monto }}</h3>
                                                 </li>
                                             </ul>
                                         </div>
@@ -260,15 +238,15 @@
                         </div>
 
                         <!-- Modal editar -->
-                        <div class="modal fade" id="efg{{ $entidad->id }}" tabindex="-1"
+                        <div class="modal fade" id="efg{{ $contrato->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <form class="row g-3" method="POST"
-                                    action="{{ route('update.entidad', $entidad->id) }}">
+                                    action="{{ route('update.contrato', $contrato->id) }}">
                                     @csrf
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Entidad.</h1>
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Contrato.</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
@@ -277,102 +255,67 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">Tipo
-                                                            entidad *</label>
-                                                        <select class="form-select" id="tipoEntidad_id" required
-                                                            name="tipoEntidad_id">
-                                                            @foreach ($tipo_entidades as $tipo_entidad)
-                                                                <option value="{{ $tipo_entidad->id }}">
-                                                                    {{ $tipo_entidad->nombre }}
+                                                        <label for="exampleFormControlInput1" class="form-label">Entidad *</label>
+                                                        <select class="form-select" id="entidad_id" required
+                                                            name="entidad_id">
+                                                            @foreach ($entidades as $entidad)
+                                                                <option value="{{ $entidad->id }}">
+                                                                    {{ $entidad->nombre }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Asignado a *</label>
+                                                        <select class="form-select" id="user_id" required
+                                                            name="user_id">
+                                                            @foreach ($usuarios as $usuario)
+                                                                <option value="{{ $usuario->id }}">
+                                                                    {{ $usuario->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
 
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">nombre
+                                                        <label for="exampleFormControlInput1" class="form-label">No. Contrato
                                                             *</label>
-                                                        <input type="text" class="form-control" id="nombre"
-                                                            placeholder="nombre" required name="nombre"
-                                                            value="{{ $entidad->nombre }}">
-                                                    </div>
-
-                                                    <div class="mb-3">
-                                                        <label for="exampleFormControlInput1"
-                                                            class="form-label">nombreRepresentante *</label>
-                                                        <input type="text" class="form-control"
-                                                            id="nombreRepresentante" placeholder="nombreRepresentante"
-                                                            required name="nombreRepresentante"
-                                                            value="{{ $entidad->nombreRepresentante }}">
-                                                    </div>
-
-                                                    <div class="mb-3">
-                                                        <label for="exampleFormControlInput1"
-                                                            class="form-label">apellidosRepresentante
-                                                            *</label>
-                                                        <input type="text" class="form-control"
-                                                            id="apellidosRepresentante"
-                                                            placeholder="apellidosRepresentante" required
-                                                            name="apellidosRepresentante"
-                                                            value="{{ $entidad->apellidosRepresentante }}">
-                                                    </div>
-
-                                                    <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">telefono
-                                                            *</label>
-                                                        <input type="number" class="form-control" id="inputCrear"
-                                                            placeholder="telefono" required name="telefono"
-                                                            value="{{ $entidad->telefono }}">
-                                                    </div>
-
-                                                    <div class="">
-                                                        <label for="exampleFormControlInput1" class="form-label">titular
-                                                            *</label>
-                                                        <input type="text" class="form-control" id="titular"
-                                                            placeholder="titular" required name="titular"
-                                                            value="{{ $entidad->titular }}">
+                                                        <input type="text" class="form-control" id="numeroContrato"
+                                                            placeholder="No.Contrato" required name="numeroContrato"
+                                                            value="{{ $contrato->numeroContrato }}">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">direccion
+                                                        <label for="exampleFormControlInput1" class="form-label">Firmado
                                                             *</label>
-                                                        <input type="text" class="form-control" id="direccion"
-                                                            placeholder="direccion" required name="direccion"
-                                                            value="{{ $entidad->direccion }}">
+                                                        <input type="date" class="form-control" id="fechaInicio"
+                                                            placeholder="" required name="fechaInicio"
+                                                            value="{{ $contrato->fechaInicio }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Vence
+                                                            *</label>
+                                                        <input type="date" class="form-control" id="fechaFin"
+                                                            placeholder="" required name="fechaFin"
+                                                            value="{{ $contrato->fechaFin }}">
                                                     </div>
 
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">cuenta
+                                                        <label for="exampleFormControlInput1" class="form-label">Monto
                                                             *</label>
-                                                        <input type="text" class="form-control" id="cuenta"
-                                                            placeholder="cuenta" required name="cuenta"
-                                                            value="{{ $entidad->cuenta }}">
+                                                        <input type="number" class="form-control form-icon-trailing" id="monto"
+                                                            placeholder="" required name="monto"
+                                                            value="{{ $contrato->monto }}">
                                                     </div>
+                                                </div>
+                                                <div class="col-md-6 ">
 
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">moneda
-                                                            *</label>
-                                                        <input type="text" class="form-control" id="moneda"
-                                                            placeholder="moneda" required name="moneda"
-                                                            value="{{ $entidad->moneda }}">
-                                                    </div>
-
-                                                    <div class="mb-3">
-                                                        <label for="exampleFormControlInput1"
-                                                            class="form-label">codigoReeup *</label>
-                                                        <input type="text" class="form-control" id="codigoReeup"
-                                                            placeholder="codigoReeup" required name="codigoReeup"
-                                                            value="{{ $entidad->codigoReeup }}">
-                                                    </div>
-
-                                                    <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">codigoNit
-                                                            *</label>
-                                                        <input type="text" class="form-control" id="codigoNit"
-                                                            placeholder="codigoNit" required name="codigoNit"
-                                                            value="{{ $entidad->codigoNit }}">
+                                                        <label for="exampleFormControlInput1" class="form-label">Descripcion *</label>
+                                                        <textarea type="" class="form-control" id="descripcion" placeholder="Escribe una descripcion..." required
+                                                            name="descripcion" value = "{{$contrato->descripcion}}"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -394,12 +337,12 @@
 
     {{-- ajax eliminar --}}
     <script>
-        function eliminarEntidad(id) {
+        function eliminarContrato(id) {
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/eliminarEntidad/' + id,
+                url: '/eliminarContrato/' + id,
                 type: 'POST',
                 success: function(result) {
                     location.reload();
@@ -433,7 +376,7 @@
         }
     </script>
 
-    {{-- Validar telef --}}
+    {{-- Validar telef 
     <script>
         let input = document.querySelector('#inputCrear');
         input.addEventListener('input', function() {
@@ -443,5 +386,5 @@
                 this.value = valor.slice(0, -1);
             }
         });
-    </script>
+    </script>--}}
 @endsection
