@@ -64,16 +64,48 @@ class ContratoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contrato $contrato)
+    public function update(Request $request, $id)
     {
-        //
+        Contrato::where('id', $id)
+        ->update([
+        'entidad_id' => $request->entidad_id,
+        'user_id' => $request->user_id,
+        'numeroContrato' => $request->numeroContrato,
+        'fechaInicio' => $request->fechaInicio,
+        'fechaFin' => $request->fechaFin,
+        'descripcion' => $request->descripcion,
+        'estado' => $request->estado,
+        'monto' => $request->monto,
+        
+    ]);
+
+        session()->flash('status', 'Contrato editado con éxito');
+
+        return redirect()->route('contratos.mostrar');
+
     }
+        /*  */
+    
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Contrato $contrato)
+    public function eliminarContrato(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            $contrato = Contrato::findOrFail($id);
+
+            if ($contrato->delete()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => '¡Satisfactorio!, eliminado con éxito.',
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => '¡Error!, No se pudo eliminar.',
+                ]);
+            }
+        }
     }
 }
