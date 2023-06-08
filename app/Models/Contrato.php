@@ -37,7 +37,7 @@ class Contrato extends Model
 
     public function usuario():BelongsTo{
 
-        return $this->belongsTo(Contrato::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function cobros(): BelongsToMany {

@@ -143,7 +143,7 @@
                             <td>{{ $contrato->entidad ? $contrato->entidad->nombre : 'N/A' }}</td>
                             <td>{{ $contrato->fechaFin }}</td>
                             <td>{{ $contrato->monto }}</td>
-                            <td>{{ $contrato->usuario->id /* ? $contrato->usuario->rol : 'N/A' */ }}</td>
+                            <td>{{ $contrato->usuario->email /* ? $contrato->usuario->rol : 'N/A' */ }}</td>
                             {{--  <td>{{ $entidad->moneda }}</td>
                             <td>{{ $entidad->codigoReeup }}</td>
                             <td>{{ $entidad->codigoNit }}</td>

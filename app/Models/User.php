@@ -27,7 +27,7 @@ class User extends Authenticatable
 
     public function contratos(): HasMany
     {
-        return $this->hasMany(EntornoVirtual::class, 'user_id');
+        return $this->hasMany(Contrato::class, 'user_id');
     }
 
     /**
