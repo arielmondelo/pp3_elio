@@ -74,7 +74,6 @@ class ContratoController extends Controller
         'fechaInicio' => $request->fechaInicio,
         'fechaFin' => $request->fechaFin,
         'descripcion' => $request->descripcion,
-        'estado' => $request->estado,
         'monto' => $request->monto,
         
     ]);

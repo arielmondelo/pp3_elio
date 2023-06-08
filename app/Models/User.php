@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -23,6 +24,11 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
+    public function contratos(): HasMany
+    {
+        return $this->hasMany(EntornoVirtual::class, 'user_id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

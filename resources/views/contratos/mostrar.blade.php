@@ -70,45 +70,45 @@
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">No. Contrato *</label>
-                                    <input type="text" class="form-control" id="numeroContrato" placeholder="No. Contrato" required
-                                        name="numeroContrato">
+                                    <input type="text" class="form-control" id="numeroContrato"
+                                        placeholder="No. Contrato" required name="numeroContrato">
                                 </div>
 
-                            </div>   
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Firmado *</label>
-                                    <input type="date" class="form-control" id="fechaInicio" placeholder="AAAA/MM/YYYY" 
-                                        required name="fechaInicio">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Vence *</label>
-                                    <input type="date" class="form-control" id="fechaFin" placeholder="AAAA/MM/YYYY" 
-                                        required name="fechaFin">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Monto *</label>
-                                    <input type="number" class="form-control form-icon-trailing" id="monto" placeholder="Monto" required
-                                        name="monto">
-                                </div>
-
-                                
-                            </div>
-                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Descripcion </label>
                                     <textarea type="" class="form-control" id="descripcion" placeholder="Escribe una descripcion..." required
                                         name="descripcion"></textarea>
                                 </div>
 
-                                
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Firmado *</label>
+                                    <input type="date" class="form-control" id="fechaInicio" placeholder="AAAA/MM/YYYY"
+                                        required name="fechaInicio">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Vence *</label>
+                                    <input type="date" class="form-control" id="fechaFin" placeholder="AAAA/MM/YYYY"
+                                        required name="fechaFin">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Monto *</label>
+                                    <input type="number" class="form-control form-icon-trailing" id="monto"
+                                        placeholder="Monto" required name="monto">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Estado *</label>
+                                    <input type="text" class="form-control form-icon-trailing" id="estado"
+                                        placeholder="Estado" required name="estado">
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer px-4 py-3">
-                        <button style="width:100%" class="btn btn-success" type="submit"
-                            id="eliminarArticulo">Crear</button>
+                        <button style="width:100%" class="btn btn-success" type="submit" id="">Crear</button>
                     </div>
                 </div>
             </form>
@@ -143,8 +143,8 @@
                             <td>{{ $contrato->entidad ? $contrato->entidad->nombre : 'N/A' }}</td>
                             <td>{{ $contrato->fechaFin }}</td>
                             <td>{{ $contrato->monto }}</td>
-                            <td>{{ $contrato->usuario ? $contrato->usuario->name : 'N/A' }}</td>
-                           {{--  <td>{{ $entidad->moneda }}</td>
+                            <td>{{ $contrato->usuario->id /* ? $contrato->usuario->rol : 'N/A' */ }}</td>
+                            {{--  <td>{{ $entidad->moneda }}</td>
                             <td>{{ $entidad->codigoReeup }}</td>
                             <td>{{ $entidad->codigoNit }}</td>
                             <td>{{ $entidad->titular }}</td> --}}
@@ -219,6 +219,9 @@
                                         <div class="row">
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item">
+                                                    <h3>Descripción: {{ $contrato->descripcion }}</h3>
+                                                </li>
+                                                <li class="list-group-item">
                                                     <h3>No. Contrato: {{ $contrato->numeroContrato }}</h3>
                                                 </li>
                                                 <li class="list-group-item">
@@ -255,7 +258,8 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">Entidad *</label>
+                                                        <label for="exampleFormControlInput1" class="form-label">Entidad
+                                                            *</label>
                                                         <select class="form-select" id="entidad_id" required
                                                             name="entidad_id">
                                                             @foreach ($entidades as $entidad)
@@ -266,7 +270,8 @@
                                                         </select>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">Asignado a *</label>
+                                                        <label for="exampleFormControlInput1" class="form-label">Asignado
+                                                            a *</label>
                                                         <select class="form-select" id="user_id" required
                                                             name="user_id">
                                                             @foreach ($usuarios as $usuario)
@@ -278,7 +283,8 @@
                                                     </div>
 
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">No. Contrato
+                                                        <label for="exampleFormControlInput1" class="form-label">No.
+                                                            Contrato
                                                             *</label>
                                                         <input type="text" class="form-control" id="numeroContrato"
                                                             placeholder="No.Contrato" required name="numeroContrato"
@@ -305,17 +311,17 @@
                                                     <div class="mb-3">
                                                         <label for="exampleFormControlInput1" class="form-label">Monto
                                                             *</label>
-                                                        <input type="number" class="form-control form-icon-trailing" id="monto"
-                                                            placeholder="" required name="monto"
+                                                        <input type="number" class="form-control form-icon-trailing"
+                                                            id="monto" placeholder="" required name="monto"
                                                             value="{{ $contrato->monto }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 ">
-
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">Descripcion *</label>
+                                                        <label for="exampleFormControlInput1"
+                                                            class="form-label">Descripcion *</label>
                                                         <textarea type="" class="form-control" id="descripcion" placeholder="Escribe una descripcion..." required
-                                                            name="descripcion" value = "{{$contrato->descripcion}}"></textarea>
+                                                            name="descripcion">{{ $contrato->descripcion }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -386,5 +392,5 @@
                 this.value = valor.slice(0, -1);
             }
         });
-    </script>--}}
+    </script> --}}
 @endsection

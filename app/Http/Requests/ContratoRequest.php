@@ -25,7 +25,7 @@ class ContratoRequest extends FormRequest
         return [
             'entidad_id'=>'integer|required',
             'user_id'=>'integer|required',
-            'cobros'=>'array',
+            /* 'cobros'=>'array', */
             'numeroContrato'=>'string|required',
             'fechaInicio'=>'date|required',
             'fechaFin'=>'date|required',
