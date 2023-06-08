@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('descripcion');
             $table->string('estado');
             $table->float('montoAumentar');
+            $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('contrato_id')->references('id')->on('contratos')->onDelete('cascade')->onUpdate('cascade');
