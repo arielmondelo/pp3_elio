@@ -19,22 +19,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
-//Rutas para login y logout.
-
-/* Route::post('/login', [AutenticadorController::class, 'login'])
-    ->name('autenticador.login'); */
-
-//Ruta para cerrar sesión. El middleware valida que esté autenticado el usuario.
-/* Route::get('logout', [AutenticadorController::class, 'logout'])
-    ->name('autenticador.logout')
-    ->middleware('auth:sanctum'); */
-
-
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -67,3 +51,11 @@ Route::get('contratos.mostrar', [ContratoController::class, 'index'])->name('con
 Route::post('/eliminarContrato/{id}', [ContratoController::class, 'eliminarContrato'])->name('eliminarcContrato');
 Route::post('guardar.contrato', [ContratoController::class, 'store'])->name('guardar.contrato');
 Route::post('update.contrato/{id}', [ContratoController::class, 'update'])->name('update.contrato');
+
+/* Admin */
+Route::get('/crear-usuario', [HomeController::class, 'CrearUser'])->name('crear-usuario');
+Route::post('/guardar-usuario', [HomeController::class, 'storeUser'])->name('guardar-usuario');
+Route::post('eliminar/{id}', [HomeController::class, 'eliminarUsuario'])->name('eliminarUsuario');
+Route::get('/editar-usuario', [HomeController::class, 'editUser'])->name('editar-usuario');
+Route::get('/trazas-usuario', [HomeController::class, 'trazasUser'])->name('trazas-usuario');
+Route::get('/trazas-contrato', [HomeController::class, 'trazasContrato'])->name('trazas-contrato');
